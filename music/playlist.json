@@ -1,0 +1,6 @@
+{
+  "tracks": [
+    {"id":"varzx-ambient","title":"VarzX Ambient","artist":"VarzXOwn","src":"music.mp3"},
+    {"id":"cube-pulse","title":"Cube Pulse","artist":"VarzXOwn","src":"bot-music.mp3"}
+  ]
+}
