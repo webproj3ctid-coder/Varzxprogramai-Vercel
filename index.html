@@ -83,7 +83,7 @@ h1,h2,h3,header b,#veil .ld{font-family:Cinzel,Georgia,serif;letter-spacing:1.5p
 <div id="con"><div class="ch"><b data-ic="monitor" style="font-family:Cinzel,serif;letter-spacing:1.5px"> Console Monitor</b><span class="sub" id="cn"></span><span style="flex:1"></span><button class="btn on" data-f="all">Semua</button><button class="btn" data-f="info">Info</button><button class="btn" data-f="warn">Warn</button><button class="btn" data-f="error">Error</button><button class="btn" id="cc" data-ic="trash"></button><button class="btn" id="cy" data-ic="copy"></button><button class="btn" id="cx" data-ic="close"></button></div><div id="cb"></div></div>
 <script>
 "use strict";
-const sleep=ms=>new Promise(r=>setTimeout(r,ms)),RM=matchMedia("(prefers-reduced-motion:reduce)").matches,$=s=>document.querySelector(s),LS=localStorage;const BACKEND_URL="";/* Owner: isi URL HTTPS backend di sini agar semua pengguna otomatis terhubung. */
+const sleep=ms=>new Promise(r=>setTimeout(r,ms)),RM=matchMedia("(prefers-reduced-motion:reduce)").matches,$=s=>document.querySelector(s),LS=localStorage;const BACKEND_URL="http://lunaris-node-free.hostkita.help:20231/health";/* Owner: isi URL HTTPS backend di sini agar semua pengguna otomatis terhubung. */
 let base=BACKEND_URL||LS.vx_base||"",role=LS.vx_role||sessionStorage.vx_role||"",uname=LS.vx_name||sessionStorage.vx_name||"",reg=false,tok=LS.vx_tok||sessionStorage.vx_tok||"",caps={},mode="normal",web=false,ctrl=null,chats=JSON.parse(LS.vx_chats||"[]"),cur=null,busy=false;
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
 const LOG=[];let lf="all";const LV={info:"INFO",net:"NET",ok:"OK",warn:"WARN",error:"ERR"};
