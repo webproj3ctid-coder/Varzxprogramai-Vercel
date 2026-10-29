@@ -1,5 +1,8 @@
 {
   "cleanUrls": true,
+  "rewrites": [
+    {"source": "/vx-proxy/:path*", "destination": "http://lunaris-node-free.hostkita.help:20231/:path*"}
+  ],
   "headers": [
     {"source": "/(.*)", "headers": [
       {"key": "X-Content-Type-Options", "value": "nosniff"},

@@ -17,3 +17,16 @@ MUSIC PLAYLIST
 - Atur Music menyediakan mode repeat satu lagu atau urutan otomatis, tombol sebelumnya/berikutnya, dan daftar lagu. Chat dapat menjawab perintah daftar musik dan memutar lagu berdasarkan judul yang cocok.
 - Sesi login disimpan di localStorage agar tetap masuk setelah halaman dimuat ulang; logout menghapus sesi lokal. Pastikan HTTPS aktif dan lindungi perangkat bersama.
 - Prompt AI memiliki gaya bahasa Gaul / santai atau Biasa / profesional dan identitas VarzXProgramCubeAI ciptaan VarzXOwn.
+
+
+BACKEND HTTP (UPDATE)
+- Backend http://lunaris-node-free.hostkita.help:20231 sudah dipasang di BACKEND_URL (index.html).
+- Halaman Vercel itu HTTPS, jadi browser memblokir backend http://. Solusinya: vercel.json punya rewrite /vx-proxy/* -> backend, dan index.html otomatis lewat /vx-proxy saat halaman HTTPS. CORS_ORIGINS tidak perlu untuk jalur proxy ini.
+- Kalau proxy Vercel gagal (mis. port 20231 tidak didukung), pakai domain HTTPS untuk backend (Cloudflare Tunnel / reverse proxy) lalu ganti PROXY_TARGET + BACKEND_URL di index.html.
+
+
+PANEL PTERODACTYL (Mode Owner)
+- Login sebagai Owner > Pengaturan > Account > bagian "Panel Pterodactyl": isi URL panel, Server ID, dan Client API Key (ptlc_..., dari Account > API Credentials di panel).
+- Token hanya disimpan di browser Owner (localStorage), tidak dikirim ke backend. Kontrol: Start / Restart / Stop / Kill + kirim command + status CPU/RAM.
+- Browser memanggil panel langsung, jadi URL panel harus HTTPS (halaman Vercel HTTPS) dan panel harus mengizinkan CORS dari domain Vercel-mu.
+- ZIP ini hanya WEB. Isi ZIP PANEL (app.py, core.py, config.json) tidak berubah.
