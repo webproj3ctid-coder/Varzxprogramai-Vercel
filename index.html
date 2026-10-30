@@ -153,6 +153,64 @@ header .pill{flex:none;white-space:nowrap}header .btn{flex:none;padding:8px 10px
 .tgc{border:1px solid var(--ln);border-radius:14px;padding:10px 12px;margin:8px 0;background:#0d0d12}.tgh{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.tgs{padding-left:18px;margin:8px 0}.tgs li{margin:4px 0}.tgc .tools a.btn{text-decoration:none;display:inline-block}
 .stabs{overflow-x:auto;scrollbar-width:none}.stabs .btn{flex:1 0 auto;padding:8px 10px}
 @media(prefers-reduced-motion:reduce){#obub{animation:none}}
+/* ===== VX4: maintenance + surat update ===== */
+body.inmaint{overflow:hidden}
+#maint{position:fixed;inset:0;z-index:97;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:26px 22px;text-align:center;background:radial-gradient(circle at 50% 30%,#2a0610 0%,#0a0508 62%,#050507 100%);opacity:0;visibility:hidden;transition:opacity .45s,visibility .45s;overflow-y:auto}
+#maint.show{opacity:1;visibility:visible}
+.mglow{position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(255,42,69,.28),transparent 65%);top:8%;left:50%;transform:translateX(-50%);animation:vxMg 3s ease-in-out infinite;pointer-events:none}
+.mgear{width:min(250px,70vw);height:auto;position:relative;flex:none}.mgear path,.mgear circle{fill:none;stroke:#ff4a63;stroke-width:3;stroke-linejoin:round;filter:drop-shadow(0 0 6px rgba(255,42,69,.7))}
+.mgear g{transform-box:fill-box;transform-origin:center}.mgear .g1{animation:vxRot 9s linear infinite}.mgear .g2{animation:vxRot 6s linear infinite reverse}.mgear .g3{animation:vxRot 5.2s linear infinite}
+.mtt{font:700 clamp(22px,6vw,30px) Cinzel,serif;letter-spacing:2px;background:linear-gradient(100deg,#ff8a9a 20%,#fff 45%,#ff5a70 60%,#ff8a9a 80%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:vxShim 3s linear infinite}
+.mmsg{max-width:min(480px,92vw);color:#d9c9ce;line-height:1.6;font-size:15px;white-space:pre-wrap;overflow-wrap:anywhere}
+.mchips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}.mchip{padding:6px 12px;border:1px solid var(--rd);border-radius:99px;background:#2a0d15;font-size:12.5px;color:#ffb0bb}
+.mct{font:700 26px Oxanium,ui-monospace,monospace;letter-spacing:2px;color:#fff;text-shadow:0 0 16px rgba(255,42,69,.8);font-variant-numeric:tabular-nums}
+.mbar{width:min(280px,70vw);height:4px;border-radius:4px;background:#1a1a22;overflow:hidden;flex:none}.mbar i{display:block;width:40%;height:100%;background:linear-gradient(90deg,transparent,#ff2a45,transparent);animation:vxSweep 1.6s ease-in-out infinite}
+.mbt{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+#mbanner{flex:none;background:linear-gradient(90deg,#4a2a00,#6b3a00);color:#ffe2a8;font:700 11.5px Oxanium,sans-serif;letter-spacing:.5px;padding:6px 12px;text-align:center;border-bottom:1px solid #ffb84d}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+@keyframes vxMg{50%{transform:translateX(-50%) scale(1.15);opacity:.7}}@keyframes vxRot{to{transform:rotate(360deg)}}
+#lt{position:fixed;inset:0;z-index:94;display:grid;place-items:center;perspective:900px;opacity:0;animation:ltFade .5s forwards}#lt.out{animation:ltFadeOut .45s forwards}
+.lt-bg{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(60,10,22,.9),rgba(5,5,8,.96) 72%);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.lt-sparks{position:absolute;inset:0;overflow:hidden;pointer-events:none}.lt-sparks i{position:absolute;bottom:-20px;left:var(--x);width:var(--s);height:var(--s);border-radius:50%;background:radial-gradient(circle,#ffd58a,rgba(255,90,112,0) 70%);animation:ltUp 6s linear infinite;animation-delay:var(--d);opacity:0}
+.lt-env{position:relative;width:min(300px,78vw);height:min(196px,51vw);animation:ltFly 1s cubic-bezier(.2,.9,.25,1.15) both,ltBob 3.6s ease-in-out 1s infinite;cursor:pointer;transform-style:preserve-3d;outline:none;z-index:2}
+.env-back{position:absolute;inset:0;border-radius:10px;background:linear-gradient(160deg,#4a1220,#220a12);border:1px solid rgba(255,120,140,.35);box-shadow:0 18px 50px rgba(0,0,0,.7),0 0 40px rgba(255,42,69,.25)}
+.env-sheet{position:absolute;left:6%;right:6%;top:8%;height:84%;border-radius:6px;background:repeating-linear-gradient(#f4e9d8 0 14px,#e6d6ba 14px 15px);transition:transform .9s .3s cubic-bezier(.3,.9,.3,1);box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.env-front{position:absolute;inset:0;border-radius:10px;background:linear-gradient(#3d1020,#290b15);clip-path:polygon(0 100%,0 26%,50% 70%,100% 26%,100% 100%);border:1px solid rgba(255,120,140,.25)}
+.env-flap{position:absolute;left:0;right:0;top:0;height:64%;background:linear-gradient(#6a1d30,#431123);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:50% 0;z-index:3;filter:drop-shadow(0 4px 6px rgba(0,0,0,.5))}
+.env-seal{position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffd98a,#d6932a 55%,#7a4a10);box-shadow:0 0 22px rgba(255,190,80,.7),inset 0 0 8px rgba(0,0,0,.4);display:grid;place-items:center;font:800 15px Cinzel,serif;color:#5a2a05;z-index:4;animation:ltSeal 1.6s ease-in-out infinite}
+.env-shards{position:absolute;left:50%;top:50%;z-index:5;pointer-events:none}.env-shards i{position:absolute;width:9px;height:9px;margin:-4px;border-radius:2px;background:#ffcf6b;opacity:0}
+#lt.open .env-sheet{transform:translateY(-58%)}#lt.open .env-flap{animation:ltFlap .8s forwards}#lt.open .env-seal{animation:ltBreak .5s forwards}#lt.open .env-shards i{animation:ltShard .8s ease-out forwards}
+#lt.paper .lt-env{animation:ltEnvOut .6s forwards;pointer-events:none}
+.lt-hint{position:absolute;bottom:14%;left:0;right:0;text-align:center;color:#ffcf8a;font:700 13px Oxanium,sans-serif;letter-spacing:1px;animation:vxCaret 1.6s ease-in-out infinite;z-index:2;pointer-events:none}#lt.open .lt-hint,#lt.paper .lt-hint{display:none}
+.lt-paper{position:relative;width:min(560px,94vw);max-height:88dvh;display:flex;flex-direction:column;border-radius:18px;background:linear-gradient(180deg,#1c1217,#120c11);border:1px solid rgba(255,184,77,.35);box-shadow:0 30px 90px #000,0 0 60px rgba(255,42,69,.22);overflow:hidden;animation:ltPaper .85s cubic-bezier(.2,.9,.25,1.1) both;z-index:3}
+.lt-paper[hidden]{display:none}.lt-paper:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 28px);pointer-events:none}
+.lp-prog{height:3px;background:#2a1a20;flex:none}.lp-prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff2a45,#ffb84d);box-shadow:0 0 10px #ff2a45}
+.lp-x{position:absolute;top:12px;right:10px;width:36px;height:36px;border-radius:50%;border:1px solid var(--ln);background:#1a1218;color:#ffb0bb;z-index:3;padding:0}
+.lp-scroll{overflow-y:auto;overscroll-behavior:contain;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;flex:1 1 auto;min-height:0;position:relative}
+.lp-head{text-align:center}.lp-seal{width:46px;height:46px;border-radius:50%;margin:0 auto 6px;background:radial-gradient(circle at 35% 30%,#ffd98a,#d6932a 55%,#7a4a10);display:grid;place-items:center;font:800 13px Cinzel,serif;color:#5a2a05;box-shadow:0 0 18px rgba(255,190,80,.6);animation:ltSealIn .9s .3s both}
+.lp-kick{font:700 11px Oxanium,sans-serif;letter-spacing:4px;color:#ffb84d}.lp-head h3{margin:6px 0;font:700 26px Cinzel,serif;letter-spacing:1.5px;background:linear-gradient(100deg,#ffb0bb,#fff,#ff6a80);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lp-meta{display:flex;gap:10px;justify-content:center;align-items:center;color:var(--mu);font-size:12.5px}.lp-ver{padding:2px 10px;border-radius:99px;border:1px solid var(--rd);background:#2a0d15;color:#ffb0bb;font:700 12px Oxanium,sans-serif}
+.lp-to{margin:14px 0 6px;color:var(--mu);font-size:13px}.lp-intro{line-height:1.75;font-size:14.5px;color:#eadfe3;margin:0}
+.lw{display:inline-block;opacity:0;transform:translateY(6px);animation:ltWord .5s var(--d) forwards}
+.lp-div{height:1px;margin:16px 0;background:linear-gradient(90deg,transparent,rgba(255,184,77,.6),transparent);animation:ltDiv 1s .6s both}
+.lsec{margin:16px 0}.lsec h4{margin:0 0 8px;font:700 15px Cinzel,serif;letter-spacing:1px;color:#ffcf8a;display:flex;gap:9px;align-items:center}.lic{font-size:19px;filter:drop-shadow(0 0 6px rgba(255,150,80,.5))}
+.lsec ul{list-style:none;margin:0;padding:0 0 0 4px;display:grid;gap:7px}.lsec li{position:relative;padding-left:16px;line-height:1.6;font-size:13.8px;color:#d9ccd0}.lsec li:before{content:"";position:absolute;left:2px;top:.62em;width:6px;height:6px;border-radius:2px;background:var(--rd);box-shadow:0 0 8px var(--rd);transform:rotate(45deg)}
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}.rv.in{opacity:1;transform:none}.lsec li.rv{transition-delay:calc(var(--i)*70ms)}
+.lp-outro{line-height:1.7;font-size:14.5px;color:#eadfe3;font-style:italic}
+.lp-sign{display:flex;align-items:center;gap:10px;margin:8px 0 0}.lp-sign svg{width:150px;height:36px;fill:none;stroke:#ffb84d;stroke-width:2;stroke-linecap:round}.lp-sign path{stroke-dasharray:420;stroke-dashoffset:420}.lp-sign.in path{animation:ltDraw 2s .2s forwards}.lp-sign span{font:italic 700 22px "Segoe Script","Brush Script MT",cursive;color:#ffcf8a}
+.lp-pad{height:8px}.lp-ft{flex:none;padding:12px 18px calc(14px + env(safe-area-inset-bottom));border-top:1px solid rgba(255,184,77,.2);display:flex;justify-content:center;background:rgba(18,12,17,.92);position:relative}
+@keyframes ltFade{to{opacity:1}}@keyframes ltFadeOut{from{opacity:1}to{opacity:0}}
+@keyframes ltFly{from{transform:translateY(110vh) rotate(-16deg) scale(.7);opacity:0}60%{transform:translateY(-16px) rotate(3deg) scale(1.03);opacity:1}to{transform:none;opacity:1}}
+@keyframes ltBob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-9px) rotate(1deg)}}
+@keyframes ltFlap{0%{transform:rotateX(0);z-index:3}49%{z-index:3}50%{transform:rotateX(90deg);z-index:1}100%{transform:rotateX(180deg);z-index:1}}
+@keyframes ltSeal{0%,100%{box-shadow:0 0 18px rgba(255,190,80,.55)}50%{box-shadow:0 0 34px rgba(255,190,80,.95)}}
+@keyframes ltBreak{to{transform:scale(1.9);opacity:0}}@keyframes ltShard{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) rotate(220deg)}}
+@keyframes ltEnvOut{to{transform:translateY(40px) scale(.6);opacity:0}}
+@keyframes ltPaper{from{transform:translateY(60px) scale(.6) rotate(-3deg);opacity:0}to{transform:none;opacity:1}}
+@keyframes ltSealIn{from{transform:scale(0) rotate(-90deg);opacity:0}to{transform:none;opacity:1}}
+@keyframes ltWord{to{opacity:1;transform:none}}@keyframes ltDiv{from{transform:scaleX(0);opacity:0}to{transform:none;opacity:1}}
+@keyframes ltDraw{to{stroke-dashoffset:0}}@keyframes ltUp{0%{transform:translateY(0);opacity:0}15%{opacity:.9}100%{transform:translateY(-105vh);opacity:0}}
+@media(prefers-reduced-motion:reduce){.lt-env,.lt-paper,.lw,.lp-div,.lp-seal,.mgear g,.mbar i,.mtt{animation:none!important}.rv{opacity:1!important;transform:none!important;transition:none!important}.lw{opacity:1;transform:none}.lp-sign path{stroke-dashoffset:0}}
 </style></head><body>
 <div id="veil"><div class="ld"><span id="vt">MEMUAT</span><div class="bar"><i></i></div></div></div><div class="scene" id="fc" data-cube><div class="cube"><i>V</i><i>X</i><i>AI</i><i>V</i><i>X</i><i>AI</i></div></div><div class="cf" id="cfx"></div><button class="btn" id="sb2" title="Suara & musik"></button>
 <div id="login"><div class="card"><h1 style="text-align:center">VarzXProgramAI</h1><div class="sub" style="text-align:center;margin-bottom:12px">Coding Edition · VxAi_V1-spGlnz</div>
@@ -181,7 +239,7 @@ header .pill{flex:none;white-space:nowrap}header .btn{flex:none;padding:8px 10px
 <div id="voice" data-s="idle" role="dialog" aria-modal="true" aria-label="Mode Suara"><div class="vorb"><i></i><i></i><i></i><div class="vcore" data-ic="mic"></div></div><div id="vst">Siap</div><div id="vtx"></div><div class="vbt"><button class="btn" id="vtalk">Bicara</button><button class="btn" id="vskip">Lewati suara</button><button class="btn pri" id="vx">Keluar</button></div></div>
 <script>
 "use strict";
-const sleep=ms=>new Promise(r=>setTimeout(r,ms)),RM=matchMedia("(prefers-reduced-motion:reduce)").matches,$=s=>document.querySelector(s),LS=localStorage;const PROXY_TARGET="http://lunaris-node-free.hostkita.help:20231",PROXY_PATH="/vx-proxy";const BACKEND_URL=PROXY_TARGET;/* Backend HTTP otomatis lewat proxy Vercel (/vx-proxy, lihat vercel.json) saat halaman HTTPS. */
+const sleep=ms=>new Promise(r=>setTimeout(r,ms)),RM=matchMedia("(prefers-reduced-motion:reduce)").matches,$=s=>document.querySelector(s),LS=localStorage;const PROXY_TARGET="http://lunaris-node-free.hostkita.help:20840",PROXY_PATH="/vx-proxy";const BACKEND_URL=PROXY_TARGET;/* Backend HTTP otomatis lewat proxy Vercel (/vx-proxy, lihat vercel.json) saat halaman HTTPS. */
 let base=BACKEND_URL||LS.vx_base||"",role=LS.vx_role||sessionStorage.vx_role||"",uname=LS.vx_name||sessionStorage.vx_name||"",reg=false,tok=LS.vx_tok||sessionStorage.vx_tok||"",caps={},mode="normal",web=false,ctrl=null,chats=JSON.parse(LS.vx_chats||"[]"),cur=null,busy=false;
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
 const LOG=[];let lf="all";const LV={info:"INFO",net:"NET",ok:"OK",warn:"WARN",error:"ERR"};
@@ -244,7 +302,7 @@ async function api(path,o={}){if(!base)throw new Error("URL backend belum diisi.
  clearTimeout(tm);
  const ms=Math.round(performance.now()-t0);
  if(r.status===401&&tok&&path!=="/v1/auth/login"){clog("warn","← 401 sesi berakhir");logout(true);throw new Error("Sesi berakhir. Silakan login lagi.")}
- if(!r.ok){let d="";try{d=(await r.json()).detail}catch(e){}clog("error","← "+r.status+" "+path+" · "+ms+"ms · "+(d||"error"));throw new Error((d||"Error")+" (HTTP "+r.status+")")}
+ if(!r.ok){let d="",jj=null;try{jj=await r.json();d=jj.detail}catch(e){}if(r.status===503&&jj&&jj.maintenance&&jj.maintenance.on)siteApply({maintenance:jj.maintenance});clog("error","← "+r.status+" "+path+" · "+ms+"ms · "+(d||"error"));throw new Error((d||"Error")+" (HTTP "+r.status+")")}
  clog("ok","← "+r.status+" "+path+" · "+ms+"ms");return r}
 async function loadModels(){const sel=$("#modelpick");if(!sel||!tok||!base)return;const old=sel.value;try{const r=await(await api("/v1/models")).json();const rows=r.data||[];sel.innerHTML=rows.map(m=>`<option value="${esc(m.id)}">${esc(m.name||m.id)}</option>`).join("")||'<option value="auto">Auto — pilih otomatis</option>';if(rows.some(m=>m.id===old))sel.value=old;clog("ok","Katalog model dimuat: "+rows.length)}catch(e){sel.innerHTML='<option value="auto">Auto — pilih otomatis</option>';clog("warn","Katalog model belum tersedia: "+e.message)}}
 $("#modelrefresh")?.addEventListener("click",loadModels);
@@ -604,7 +662,7 @@ function stab(t){stabNow=t;document.querySelectorAll("#set [data-s]").forEach(b=
 document.querySelectorAll("#set [data-s]").forEach(b=>b.onclick=()=>stab(b.dataset.s));
 
 /* --- Balon Owner --- */
-const OT=[["backend","Backend"],["aikey","AI Key"],["ptero","Ptero"],["bot","Bot"],["user","User"]];let oNow="backend",oEl=null,oBub=null;
+const OT=[["backend","Backend"],["aikey","AI Key"],["maint","Maint"],["surat","Surat"],["ptero","Ptero"],["bot","Bot"],["user","User"]];let oNow="backend",oEl=null,oBub=null;
 const CFGL={XKIRO_API_KEY:["Xkiro API key","Provider model gratis"],OPENROUTER_API_KEY:["OpenRouter API key","Provider model gratis"],AI_API_BASE_URL:["AI utama · Base URL","opsional, mis. https://api.openai.com/v1"],AI_API_KEY:["AI utama · API key",""],AI_MODEL_ID:["AI utama · ID model","mis. gpt-4o-mini"],VISION_API_BASE_URL:["Vision · Base URL","opsional"],VISION_API_KEY:["Vision · API key",""],VISION_MODEL_ID:["Vision · ID model",""],WEB_SEARCH_PROVIDER:["Web search · provider","ddg | brave | tavily | custom"],WEB_SEARCH_API_BASE_URL:["Web search · Base URL","untuk provider custom"],WEB_SEARCH_API_KEY:["Web search · API key","brave / tavily / custom"]};
 function ownerUI(){const on=role==="owner"&&!!tok&&!$("#app").hidden;if(on&&!oBub)buildOwner();else if(!on&&oBub){oBub.remove();oBub=null;if(oEl){oEl.remove();oEl=null}}}
 function buildOwner(){
@@ -622,7 +680,7 @@ function buildOwner(){
  document.body.append(oEl);oEl.addEventListener("click",e=>{if(e.target===oEl)closeOwner()});$("#ox").onclick=closeOwner;oEl.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>oTab(b.dataset.o))}
 function openOwner(){if(!oEl)return;snd("on");oEl.classList.add("show");oTab(oNow)}
 function closeOwner(){if(oEl)oEl.classList.remove("show")}
-function oTab(t){oNow=t;if(!oEl)return;oEl.querySelectorAll("[data-o]").forEach(b=>b.classList.toggle("on",b.dataset.o===t));const c=$("#oc");c.classList.remove("swap");void c.offsetWidth;c.classList.add("swap");({backend:oBackend,aikey:oAIKey,ptero:oPtero,bot:oBot,user:oUser})[t](c)}
+function oTab(t){oNow=t;if(!oEl)return;oEl.querySelectorAll("[data-o]").forEach(b=>b.classList.toggle("on",b.dataset.o===t));const c=$("#oc");c.classList.remove("swap");void c.offsetWidth;c.classList.add("swap");({backend:oBackend,aikey:oAIKey,maint:oMaint,surat:oSurat,ptero:oPtero,bot:oBot,user:oUser})[t](c)}
 async function oBackend(el){const via=location.protocol==="https:"&&base===PROXY_TARGET?"Proxy Vercel (/vx-proxy)":"langsung";
  el.innerHTML=`<p class="sub">URL backend yang dipakai browser ini. Tersambung lewat: <b>${esc(via)}</b>.</p><label class="sub">URL backend</label><input id="ob3" value="${esc(base)}" autocomplete="off" inputmode="url"><div class="tools"><button class="btn pri" id="obs3">Simpan & tes</button><button class="btn" id="obr3">Muat ulang model</button></div><div class="sub" id="obm3"></div><div class="ptstat"><span class="dot" id="obd"></span><span id="obt">Memeriksa…</span></div>`;
  const chk=async()=>{try{await(await api("/health")).json();caps=await(await api("/v1/capabilities")).json();const y=v=>v?"✓":"✗";if($("#obt")){$("#obd").className="dot ok";$("#obt").textContent="Online · AI "+y(caps.chat)+" · Vision "+y(caps.image_analysis)+" · Video "+y(caps.video_analysis)+" · Web "+y(caps.web_search)}}catch(e){if($("#obt")){$("#obd").className="dot bad";$("#obt").textContent="Offline: "+e.message}}};
@@ -639,4 +697,120 @@ async function oBot(el){el.innerHTML='<div class="sub">Memuat…</div>';const ld
 async function oUser(el){el.innerHTML='<div class="sub">Memuat…</div>';try{const d=await(await api("/v1/admin/users")).json();el.innerHTML=`<p class="sub">Pendaftaran: <b>${d.registration_open?"terbuka":"ditutup"}</b> · ${d.users.length} pengguna</p>`+d.users.map(u=>`<div class="kr"><div><b>${esc(u.name)}</b><br><span class="sub">${esc(u.email)}</span></div></div>`).join("")}catch(e){jsonErr(el,e)}}
 {const _en=enter;enter=async function(){const r=await _en.apply(this,arguments);ownerUI();return r};const _lo=logout;logout=function(){const r=_lo.apply(this,arguments);ownerUI();return r}}
 ownerUI();
+
+/* ===== VX4: mode maintenance (publik) + surat update beranimasi ===== */
+const APP_VER="2.0.0";
+const LETTER_DEFAULT={version:APP_VER,title:"Cube Evolution",date:"30 Oktober 2026",
+intro:"Halo, {nama}! Terima kasih sudah memakai VarzXProgramAI. Versi 2.0.0 “Cube Evolution” adalah pembaruan terbesar sejauh ini: tampilan jauh lebih hidup, banyak bug layar HP dibereskan, dan hadir kemampuan baru mulai dari suara, gambar, video, sampai bot Telegram. Berikut rincian lengkapnya.",
+sections:[
+{icon:"🎨",title:"Tampilan & animasi",items:["Pesan chat masuk dengan animasi slide + blur + kilau merah: pesanmu dari kanan, jawaban AI dari kiri.","Jawaban AI diketik huruf demi huruf dengan kursor menyala. Ketuk bubble untuk melewatinya; kode dan format tetap utuh.","Loading AI baru: kubus 3D berputar, teks berkilau yang berganti sesuai mode (Coding, Vision, Video, dll), timer detik, dan skeleton bercahaya.","Progress bar atas bergerak mengikuti proses. Semua animasi otomatis mati jika perangkatmu memakai “reduce motion”."]},
+{icon:"🎵",title:"Tombol musik",items:["Saat pertama masuk, tombol musik mati lalu membesar ke tengah layar dengan tooltip penjelasan.","Klik 1× memutar/menjeda musik, klik 2× membuka pengaturan dan pilihan lagu.","Klik ganda saat tombol sedang membesar kini terbaca dengan benar, dan zoom saat double-tap di HP dicegah."]},
+{icon:"🛠",title:"Perbaikan bug besar",items:["Layout tembus ke samping dan ke bawah di HP sudah diperbaiki. Penyebabnya header yang terlalu lebar; kini seluruh layar dikunci setinggi perangkat.","Header dan tombol ⋮ menempel di atas layar, jadi tidak perlu scroll ke atas lagi setelah chat panjang.","Tab navigasi dan kolom ketik selalu menempel di bawah layar, termasuk saat keyboard muncul.","Tombol sound yang terpotong dan kubus loader yang mengecil (akibat gaya yang bentrok) sudah dibereskan.","Pembuatan proyek ZIP kini mencoba ulang otomatis sampai 3 kali bila AI menghasilkan JSON rusak (sebelumnya sering error 422)."]},
+{icon:"⬇️",title:"Auto scroll",items:["Jawaban panjang diikuti otomatis sampai selesai.","Jika kamu scroll ke atas untuk membaca, auto-scroll berhenti dan muncul tombol ↓ untuk kembali ke pesan terbaru."]},
+{icon:"🤖",title:"Pemilih model AI buatan sendiri",items:["Daftar model dengan logo per keluarga (OpenAI, Claude, Gemini, Llama, Mistral, DeepSeek, Qwen, dll). Logonya simbol sederhana buatan kami, bukan logo resmi.","Status ON / OFF / ? di setiap model. Model OFF tidak bisa dipilih dan alasannya ditampilkan.","Tombol Cek per model dan “Cek status semua” untuk tes langsung, plus pencarian dan filter Vision.","Mode Auto otomatis menghindari model yang sedang OFF."]},
+{icon:"🔑",title:"API Key lengkap",items:["Setiap key punya nama dan masa berlaku: 7, 30, 90, 180 hari, 1 tahun, atau tanpa batas.","Daftar key menampilkan tanggal kedaluwarsa dan sisa hari (oranye bila ≤7 hari, merah bila sudah lewat). Key kedaluwarsa ditolak dengan HTTP 401.","Di bawahnya ada daftar endpoint (chat, models, vision, files, projects), contoh curl, dan daftar semua model beserta ID dan statusnya yang bisa disalin."]},
+{icon:"👁",title:"Vision & Video",items:["Mode Vision dan Video punya tombol sendiri. Gambar dikecilkan di browser lalu dianalisis model vision.","Video dipecah menjadi 6 frame langsung di browser, jadi server tidak butuh ffmpeg. Suara pada video belum dianalisis.","Jika VISION_* tidak diisi, panel memakai model gratis berkemampuan gambar dari katalog."]},
+{icon:"🎙",title:"Mode Suara",items:["Tombol mikrofon untuk dikte, dan “Mode Suara” untuk percakapan: kamu bicara, AI menjawab dengan suara, lalu mendengarkan lagi.","Berbahasa Indonesia; blok kode tidak dibacakan. Butuh Chrome/Edge dan izin mikrofon."]},
+{icon:"📱",title:"Bot Telegram",items:["Pengaturan > Telegram: tempel token dari @BotFather, bot langsung berjalan dari server.","Perintah: /chataion, /chataioff, /pilihmodel, /aturbotsendiri, /reset, /status, /id, /help.","/aturbotsendiri memakai API key AI milikmu sendiri (kompatibel OpenAI, wajib HTTPS). Pesan yang berisi key dihapus otomatis.","Bisa dibatasi ke ID Telegram tertentu. Di grup, bot hanya menjawab saat di-mention atau dibalas."]},
+{icon:"👑",title:"Balon Owner (khusus Owner)",items:["Balon emas melayang yang hanya ada di layar Owner: Backend, AI Key, Ptero, Bot, User, Maint, dan Surat.","API key penyedia AI bisa diisi dari web dan langsung berlaku tanpa restart.","Kontrol panel Pterodactyl (start, restart, stop, kill, command) memakai token yang disimpan di browser Owner."]},
+{icon:"🚧",title:"Mode Maintenance",items:["Owner bisa menyalakan maintenance untuk publik lengkap dengan judul, alasan, dan estimasi selesai (hitung mundur).","Saat aktif, pengguna biasa, API key, dan bot Telegram diblokir dengan pesan penjelasan. Owner tetap bisa masuk.","Halaman maintenance beranimasi dan memeriksa status otomatis; begitu selesai layar kembali normal."]},
+{icon:"✉️",title:"Surat update ini",items:["Surat ini muncul sekali setiap ada versi baru. Kamu bisa membacanya lagi lewat Pengaturan > Account.","Owner bisa menulis ulang isi surat dan menampilkannya lagi ke semua pengguna dari balon Owner."]},
+{icon:"🔐",title:"Keamanan & stabilitas",items:["Token bot dan key AI pribadi dienkripsi di server. URL AI pribadi wajib HTTPS dan alamat lokal/privat ditolak.","Batas login dan daftar dihitung per pengguna walau lewat proxy Vercel (X-Forwarded-For).","Server memasang dependensi otomatis bila belum ada dan kompatibel dengan Python 3.9+."]},
+{icon:"📌",title:"Catatan penting",items:["Chat AI membutuhkan API key Xkiro atau OpenRouter di server (Owner: balon 👑 > AI Key).","Fitur suara, vision, dan Telegram bergantung pada browser dan jaringan. Jika ada yang tidak jalan, lihat Console di bawah layar chat.","Menemukan bug? Laporkan ke Owner beserta tangkapan layar."]}],
+outro:"Terima kasih sudah ikut berkembang bersama VarzXProgramAI. Semoga setiap pembaruan terasa makin nyaman dipakai. Selamat mencoba!",sign:"VarzXOwn"};
+let SITE={maintenance:{on:false},letter:null,rev:0},maintBypass=false,maintPreview=false,mEl=null,mBan=null,mTick=null,wasOn=false;
+const isOwnerNow=()=>role==="owner"&&!!tok;
+function gearPath(cx,cy,n,ro,ri){let d="";const st=Math.PI*2/n;for(let i=0;i<n;i++){const a=i*st;[[ri,a-st*.26],[ro,a-st*.13],[ro,a+st*.13],[ri,a+st*.26]].forEach((p,j)=>{d+=(i+j===0?"M":"L")+(cx+p[0]*Math.cos(p[1])).toFixed(1)+" "+(cy+p[0]*Math.sin(p[1])).toFixed(1)+" "})}return d+"Z"}
+async function siteFetch(){if(!base||eff(base)===null)return null;const c=new AbortController(),t=setTimeout(()=>c.abort(),8000);try{const r=await fetch(eff(base)+"/v1/site",{signal:c.signal});clearTimeout(t);return r.ok?await r.json():null}catch(e){clearTimeout(t);return null}}
+function siteApply(d){if(!d)return;SITE=Object.assign({},SITE,d);maintRender()}
+function buildMaint(){
+ mEl=document.createElement("div");mEl.id="maint";mEl.setAttribute("role","alertdialog");mEl.setAttribute("aria-live","polite");
+ mEl.innerHTML=`<div class="mglow"></div><svg class="mgear" viewBox="0 0 220 150" aria-hidden="true"><g class="g1"><path d="${gearPath(80,80,12,52,42)}"/><circle cx="80" cy="80" r="16"/></g><g class="g2"><path d="${gearPath(158,48,8,30,23)}"/><circle cx="158" cy="48" r="9"/></g><g class="g3"><path d="${gearPath(166,112,8,22,17)}"/><circle cx="166" cy="112" r="6"/></g></svg>
+ <div class="mtt" id="mTt">Sedang Maintenance</div><div class="mmsg" id="mMsg"></div>
+ <div class="mchips"><span class="mchip" id="mEtaT" hidden></span><span class="mchip" id="mSince" hidden></span></div><div class="mct" id="mCt" hidden></div>
+ <div class="mbar"><i></i></div>
+ <div class="mbt"><button class="btn pri" id="mRe">Cek lagi</button><button class="btn" id="mOwn">Masuk sebagai Owner</button><button class="btn" id="mPv" hidden>Tutup pratinjau</button></div><div class="sub" id="mNote">Halaman ini memeriksa status otomatis.</div>`;
+ document.body.append(mEl);
+ $("#mRe").onclick=async()=>{const b=$("#mRe");b.disabled=true;b.textContent="Memeriksa…";const d=await siteFetch();if(d)siteApply(d);else toast("Tidak dapat menghubungi server.");b.disabled=false;b.textContent="Cek lagi"};
+ $("#mOwn").onclick=()=>{maintBypass=true;maintRender();if($("#ob")&&$("#ob").hidden&&$("#om"))$("#om").click()};
+ $("#mPv").onclick=()=>{maintPreview=false;maintRender()};
+ const mb=document.querySelector("#main");if(mb){mBan=document.createElement("div");mBan.id="mbanner";mBan.hidden=true;mBan.textContent="🛠 MAINTENANCE AKTIF — hanya Owner yang bisa memakai. Pengguna lain melihat halaman maintenance.";mb.prepend(mBan)}}
+const pad2=n=>String(n).padStart(2,"0");
+function maintRender(){if(!mEl)buildMaint();const m=SITE.maintenance||{on:false},show=(m.on&&!isOwnerNow()&&!(maintBypass&&!tok))||maintPreview;
+ if(wasOn&&!m.on&&!maintPreview&&!isOwnerNow())toast("Maintenance selesai ✅ Silakan lanjutkan.");wasOn=!!m.on;
+ mEl.classList.toggle("show",show);document.body.classList.toggle("inmaint",show);
+ if(mBan)mBan.hidden=!(m.on&&isOwnerNow());
+ $("#mPv").hidden=!maintPreview;$("#mOwn").hidden=maintPreview||!!tok;$("#mRe").hidden=maintPreview;$("#mNote").textContent=maintPreview?"Ini hanya pratinjau — pengguna belum melihatnya.":"Halaman ini memeriksa status otomatis tiap 20 detik.";
+ clearInterval(mTick);mTick=null;if(!show)return;
+ $("#mTt").textContent=m.title||"Sedang Maintenance";$("#mMsg").textContent=m.message||"";
+ const e=$("#mEtaT");e.textContent=m.eta_text?"⏱ Estimasi: "+m.eta_text:"";e.hidden=!m.eta_text;
+ const s=$("#mSince");s.textContent=m.since?"🕒 Mulai "+new Date(m.since*1000).toLocaleString("id-ID",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}):"";s.hidden=!m.since;
+ const ct=$("#mCt");if(m.eta_at){const tick=()=>{const left=m.eta_at-Math.floor(Date.now()/1000);if(left>0){ct.hidden=false;ct.textContent="Selesai dalam "+pad2(Math.floor(left/3600))+":"+pad2(Math.floor(left%3600/60))+":"+pad2(left%60)}else{ct.hidden=false;ct.textContent="Hampir selesai…"}};tick();mTick=setInterval(tick,1000)}else ct.hidden=true}
+function siteWatch(){const run=async()=>{if(document.hidden)return;const d=await siteFetch();if(d)siteApply(d)};run();setInterval(run,20000);document.addEventListener("visibilitychange",()=>{if(!document.hidden)run()})}
+
+/* --- Surat update beranimasi --- */
+const effLetter=()=>{const L=SITE.letter;return(L&&L.sections&&L.sections.length)?L:LETTER_DEFAULT},letterKey=L=>(L.version||APP_VER)+"#"+(SITE.rev||0);
+let ltEl=null,ltIO=null,ltAuto=null;
+function ltClose(){if(!ltEl)return;const e=ltEl;ltEl=null;clearTimeout(ltAuto);e.classList.add("out");document.removeEventListener("keydown",ltKey);if(ltIO){ltIO.disconnect();ltIO=null}setTimeout(()=>e.remove(),RM?0:450)}
+function ltKey(e){if(e.key==="Escape")ltClose()}
+const maintUp=()=>!!(mEl&&mEl.classList.contains("show"));
+async function letterMaybe(){if(!tok||maintUp()||ltEl)return;const d=await siteFetch();if(d)siteApply(d);if((SITE.maintenance||{}).on&&!isOwnerNow())return;const L=effLetter();if(LS.vx_letter_seen===letterKey(L))return;letterShow(false)}
+function letterShow(force,draft){if(ltEl)return;const L=draft||effLetter(),nm=uname||"Pengguna";
+ const words=t=>String(t||"").replace(/\{nama\}/g,nm).split(/\s+/).filter(Boolean).map((w,i)=>`<span class="lw" style="--d:${Math.min(i*26,2000)}ms">${esc(w)}</span>`).join(" ");
+ const secs=(L.sections||[]).map(s=>`<section class="lsec rv"><h4><span class="lic">${esc(s.icon||"•")}</span>${esc(s.title||"")}</h4><ul>${(s.items||[]).map((it,i)=>`<li class="rv" style="--i:${i}">${esc(String(it).replace(/\{nama\}/g,nm))}</li>`).join("")}</ul></section>`).join("");
+ ltEl=document.createElement("div");ltEl.id="lt";ltEl.setAttribute("role","dialog");ltEl.setAttribute("aria-modal","true");ltEl.setAttribute("aria-label","Surat update");
+ ltEl.innerHTML=`<div class="lt-bg"></div><div class="lt-sparks">${Array.from({length:16},(_,i)=>`<i style="--x:${(i*61)%100}%;--d:${((i*37)%40)/10}s;--s:${6+(i*7)%10}px"></i>`).join("")}</div>
+ <div class="lt-env" id="ltEnv" role="button" tabindex="0" aria-label="Buka surat"><div class="env-back"></div><div class="env-sheet"></div><div class="env-front"></div><div class="env-flap"></div><div class="env-seal"><b>VX</b></div><div class="env-shards">${[0,1,2,3,4,5,6,7].map(i=>`<i style="--tx:${Math.round(Math.cos(i*.785)*70)}px;--ty:${Math.round(Math.sin(i*.785)*60)}px"></i>`).join("")}</div></div>
+ <div class="lt-hint" id="ltHint">✉ Ada surat untukmu · ketuk untuk membuka</div>
+ <div class="lt-paper" id="ltPaper" hidden><div class="lp-prog"><i id="lpBar"></i></div><button class="lp-x" id="lpX" aria-label="Tutup">✕</button>
+  <div class="lp-scroll" id="lpS"><div class="lp-head"><div class="lp-seal"><b>VX</b></div><div class="lp-kick">SURAT UPDATE</div><h3>${esc(L.title||"")}</h3><div class="lp-meta"><span class="lp-ver">v${esc(L.version||APP_VER)}</span><span>${esc(L.date||"")}</span></div></div>
+  <div class="lp-to">Untuk: <b>${esc(nm)}</b></div><p class="lp-intro">${words(L.intro)}</p><div class="lp-div"></div>${secs}<div class="lp-div"></div>
+  <p class="lp-outro rv">${esc(L.outro||"")}</p><div class="lp-sign rv"><svg viewBox="0 0 220 50" aria-hidden="true"><path d="M5 38 C30 6 52 6 60 28 S90 48 105 22 S135 4 150 30 S190 40 215 14"/></svg><span>${esc(L.sign||"")}</span></div><div class="lp-pad"></div></div>
+  <div class="lp-ft"><button class="btn pri" id="lpOk">Mengerti, lanjut</button></div></div>`;
+ document.body.append(ltEl);document.addEventListener("keydown",ltKey);
+ const open=()=>{if(!ltEl||ltEl.classList.contains("open"))return;clearTimeout(ltAuto);ltEl.classList.add("open");snd("on");setTimeout(paper,RM?0:1150)};
+ const paper=()=>{if(!ltEl)return;const p=$("#ltPaper");p.hidden=false;ltEl.classList.add("paper");snd("recv");if(!draft)LS.vx_letter_seen=letterKey(L);
+  const S=$("#lpS");ltIO=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");ltIO&&ltIO.unobserve(x.target)}}),{root:S,threshold:.12});S.querySelectorAll(".rv").forEach(x=>ltIO.observe(x));
+  const bar=$("#lpBar"),up=()=>{bar.style.width=Math.min(100,S.scrollTop/Math.max(1,S.scrollHeight-S.clientHeight)*100)+"%"};S.addEventListener("scroll",up,{passive:true});up()};
+ const env=$("#ltEnv");env.onclick=open;env.onkeydown=e=>{if(e.key==="Enter"||e.key===" ")open()};$("#lpOk").onclick=ltClose;$("#lpX").onclick=ltClose;ltEl.querySelector(".lt-bg").onclick=()=>{if(!ltEl.classList.contains("paper"))ltClose()};
+ if(RM)open();else ltAuto=setTimeout(open,7000)}
+{const _ra=rAccount;rAccount=async function(el){await _ra(el);el.insertAdjacentHTML("beforeend",`<hr style="border-color:var(--ln)"><div class="tools"><button class="btn" id="ltre">✉ Baca surat update v${esc(effLetter().version||APP_VER)}</button></div>`);const b=$("#ltre");if(b)b.onclick=()=>{closeSet();setTimeout(()=>letterShow(true),260)}}}
+
+/* --- Owner: tab Maintenance & Surat --- */
+const secParse=t=>{const out=[];let cur=null;for(const raw of String(t).split("\n")){const l=raw.trim();if(!l)continue;if(l.startsWith("##")){const h=l.replace(/^#+\s*/,""),m=h.match(/^(\p{Extended_Pictographic}\uFE0F?)\s*(.*)$/u);cur={icon:m?m[1]:"",title:m?m[2]:h,items:[]};out.push(cur)}else if(cur)cur.items.push(l.replace(/^[-•*]\s*/,""))}return out};
+const secDump=a=>(a||[]).map(s=>"## "+(s.icon?s.icon+" ":"")+s.title+"\n"+(s.items||[]).map(i=>"- "+i).join("\n")).join("\n\n");
+const etaVal=m=>m.eta_at?new Date(m.eta_at*1000-new Date().getTimezoneOffset()*60000).toISOString().slice(0,16):"";
+async function oMaint(el){el.innerHTML='<div class="sub">Memuat…</div>';let d;try{d=await(await api("/v1/admin/site")).json()}catch(e){jsonErr(el,e);return}SITE=Object.assign({},SITE,d);const m=d.maintenance;
+ const PRE=["Pembaruan sistem & fitur baru","Perbaikan bug yang mengganggu","Migrasi / pemindahan server","Pemeliharaan database","Peningkatan keamanan"];
+ el.innerHTML=`<div class="ostat ${m.on?"bad":"ok"}">${m.on?"🛠 MAINTENANCE AKTIF — pengguna biasa diblokir":"✅ Layanan normal"}</div>
+ <div class="tools"><button class="btn ${m.on?"":"pri"}" id="mtg">${m.on?"Matikan maintenance":"Aktifkan maintenance"}</button></div>
+ <label class="sub">Judul</label><input id="mt1" maxlength="80" value="${esc(m.title||"")}" placeholder="Sedang Maintenance">
+ <label class="sub">Alasan / pemberitahuan untuk publik</label><textarea id="mt2" rows="4" maxlength="800" placeholder="Jelaskan kenapa sedang maintenance…">${esc(m.message||"")}</textarea>
+ <div class="chips">${PRE.map(p=>`<button class="btn mck" data-p="${esc(p)}">${esc(p)}</button>`).join("")}</div>
+ <label class="sub">Estimasi (teks)</label><input id="mt3" maxlength="80" value="${esc(m.eta_text||"")}" placeholder="mis. ± 30 menit">
+ <label class="sub">Estimasi selesai (hitung mundur, opsional)</label><input id="mt4" type="datetime-local" value="${etaVal(m)}">
+ <div class="tools"><button class="btn pri" id="mts">Simpan</button><button class="btn" id="mtp">Pratinjau</button></div><div class="sub" id="mtm"></div>
+ <p class="sub">Saat aktif: pengguna biasa (web), API key pengguna, dan bot Telegram diblokir dengan pesan di atas. Owner tetap bisa memakai semuanya.</p>`;
+ const cur=()=>{const v=$("#mt4").value;return{title:$("#mt1").value,message:$("#mt2").value,eta_text:$("#mt3").value,eta_at:v?Math.floor(new Date(v).getTime()/1000):0}};
+ const save=async on=>{try{const r=await(await api("/v1/admin/site",JP({maint:Object.assign(cur(),on===undefined?{}:{on})}))).json();siteApply(r);const x=$("#mtm");if(x)x.textContent="Tersimpan.";snd("recv");return true}catch(e){const x=$("#mtm");if(x)x.textContent=e.message;return false}};
+ el.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{$("#mt2").value=b.dataset.p});
+ $("#mts").onclick=async()=>{if(await save())oMaint(el)};
+ $("#mtg").onclick=async()=>{const on=!m.on;if(on&&!confirm("Aktifkan maintenance? Semua pengguna biasa langsung diblokir dan melihat halaman maintenance."))return;if(await save(on)){toast(on?"Maintenance AKTIF":"Maintenance dimatikan");oMaint(el)}};
+ $("#mtp").onclick=()=>{SITE=Object.assign({},SITE,{maintenance:Object.assign({},m,cur())});maintPreview=true;closeOwner();maintRender()}}
+async function oSurat(el){el.innerHTML='<div class="sub">Memuat…</div>';try{SITE=Object.assign({},SITE,await(await api("/v1/admin/site")).json())}catch(e){jsonErr(el,e);return}
+ const L=effLetter(),custom=!!(SITE.letter&&SITE.letter.sections&&SITE.letter.sections.length);
+ el.innerHTML=`<p class="sub">Surat update yang muncul saat pengguna masuk. Sekarang memakai <b>${custom?"surat buatan Owner":"surat bawaan"}</b>. Menyimpan = surat tampil lagi ke semua pengguna. Format bagian: <code>## ✨ Judul</code> lalu baris <code>- poin</code>. <code>{nama}</code> diganti nama pengguna.</p>
+ <div class="mpt"><div style="flex:1"><label class="sub">Versi</label><input id="sv" maxlength="20" value="${esc(L.version||"")}"></div><div style="flex:2"><label class="sub">Tanggal</label><input id="sd" maxlength="40" value="${esc(L.date||"")}"></div></div>
+ <label class="sub">Judul</label><input id="st1" maxlength="100" value="${esc(L.title||"")}"><label class="sub">Pembuka</label><textarea id="si" rows="4" maxlength="1500">${esc(L.intro||"")}</textarea>
+ <label class="sub">Isi (bagian & poin)</label><textarea id="ss" rows="12" style="font-family:ui-monospace,monospace;font-size:12.5px">${esc(secDump(L.sections))}</textarea>
+ <label class="sub">Penutup</label><textarea id="so" rows="3" maxlength="1000">${esc(L.outro||"")}</textarea><label class="sub">Tanda tangan</label><input id="sg" maxlength="80" value="${esc(L.sign||"")}">
+ <div class="tools"><button class="btn pri" id="ssv">Simpan</button><button class="btn" id="spv">Pratinjau</button><button class="btn" id="sbp">Tampilkan ulang</button><button class="btn" id="srs">Kembalikan bawaan</button></div><div class="sub" id="sm"></div>`;
+ const draft=()=>({version:$("#sv").value.trim(),title:$("#st1").value.trim(),date:$("#sd").value.trim(),intro:$("#si").value.trim(),sections:secParse($("#ss").value),outro:$("#so").value.trim(),sign:$("#sg").value.trim()});
+ const post=async b=>{try{const r=await(await api("/v1/admin/site",JP(b))).json();siteApply(r);$("#sm")&&($("#sm").textContent="Tersimpan.");snd("recv");return true}catch(e){const x=$("#sm");if(x)x.textContent=e.message;return false}};
+ $("#ssv").onclick=async()=>{const d=draft();if(!d.sections.length){$("#sm").textContent="Isi minimal satu bagian (## Judul lalu - poin).";return}if(await post({letter:d}))oSurat(el)};
+ $("#spv").onclick=()=>{const d=draft();closeOwner();setTimeout(()=>letterShow(true,d),250)};
+ $("#sbp").onclick=async()=>{if(await post({bump:true}))toast("Surat akan tampil lagi ke semua pengguna")};
+ $("#srs").onclick=async()=>{if(!confirm("Kembalikan ke surat bawaan?"))return;if(await post({reset_letter:true}))oSurat(el)}}
+{const _e3=enter;enter=async function(){const r=await _e3.apply(this,arguments);maintRender();setTimeout(letterMaybe,1500);return r};const _l3=logout;logout=function(){const r=_l3.apply(this,arguments);maintRender();return r}}
+siteWatch();
 </script></body></html>

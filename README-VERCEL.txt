@@ -20,9 +20,9 @@ MUSIC PLAYLIST
 
 
 BACKEND HTTP (UPDATE)
-- Backend http://lunaris-node-free.hostkita.help:20231 sudah dipasang di BACKEND_URL (index.html).
+- Backend http://lunaris-node-free.hostkita.help:20840 sudah dipasang di BACKEND_URL (index.html).
 - Halaman Vercel itu HTTPS, jadi browser memblokir backend http://. Solusinya: vercel.json punya rewrite /vx-proxy/* -> backend, dan index.html otomatis lewat /vx-proxy saat halaman HTTPS. CORS_ORIGINS tidak perlu untuk jalur proxy ini.
-- Kalau proxy Vercel gagal (mis. port 20231 tidak didukung), pakai domain HTTPS untuk backend (Cloudflare Tunnel / reverse proxy) lalu ganti PROXY_TARGET + BACKEND_URL di index.html.
+- Kalau proxy Vercel gagal (mis. port 20840 tidak didukung), pakai domain HTTPS untuk backend (Cloudflare Tunnel / reverse proxy) lalu ganti PROXY_TARGET + BACKEND_URL di index.html.
 
 
 PANEL PTERODACTYL (Mode Owner)
