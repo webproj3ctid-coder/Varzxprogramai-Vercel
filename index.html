@@ -1,4 +1,4 @@
-<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#07070a"><title>VarzXProgramAI</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 fill=%27%2307070a%27/%3E%3Cpath d=%27M32 58 10 22h44z%27 fill=%27none%27 stroke=%27%23ff2a45%27 stroke-width=%273%27/%3E%3Cpath d=%27M10 22C6 14 8 8 14 4c-1 8 4 12 10 14M54 22c4-8 2-14-4-18 1 8-4 12-10 14%27 fill=%27none%27 stroke=%27%23ff2a45%27 stroke-width=%273%27/%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Manrope:wght@400;500;700&family=Oxanium:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content"><meta name="theme-color" content="#07070a"><title>VarzXProgramAI</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 fill=%27%2307070a%27/%3E%3Cpath d=%27M32 58 10 22h44z%27 fill=%27none%27 stroke=%27%23ff2a45%27 stroke-width=%273%27/%3E%3Cpath d=%27M10 22C6 14 8 8 14 4c-1 8 4 12 10 14M54 22c4-8 2-14-4-18 1 8-4 12-10 14%27 fill=%27none%27 stroke=%27%23ff2a45%27 stroke-width=%273%27/%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Manrope:wght@400;500;700&family=Oxanium:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#07070a;--p:#0f0f15;--p2:#16161e;--ln:#2a1a20;--mu:#9a9aa8;--tx:#f4f4f7;--rd:#ff2a45;--rd2:#8f0f24;--ok:#5fe0a8}
 *{box-sizing:border-box}html,body{height:100%}body{margin:0;background:radial-gradient(ellipse at 85% -10%,#3a0a14 0,transparent 40%),var(--bg);color:var(--tx);font:15px/1.6 Manrope,"Segoe UI",system-ui,sans-serif}
@@ -94,6 +94,53 @@ h1,h2,h3,header b,#veil .ld{font-family:Cinzel,Georgia,serif;letter-spacing:1.5p
 @media (prefers-reduced-motion:reduce){.vxcube,.vxring,.vxwave b,.tk-t,.vxskel i,.m.think,.m.think::before,.vxcaret{animation:none!important}}
 .ptstat{display:flex;align-items:center;gap:8px;margin:10px 0 6px;padding:8px 10px;border:1px solid var(--ln);border-radius:10px;background:#0b0b10;font-size:13px}#ptbox input{margin:4px 0 8px;width:100%}
 #sb,#sb2{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+/* ===== VX2: layout kokoh (tanpa tembus bawah/samping), header menempel, model picker, suara ===== */
+html{max-width:100%;overflow-x:hidden}
+body{max-width:100%;overflow-x:hidden}
+body.dash{position:fixed;inset:0;width:100%;height:100%;overflow:hidden;overscroll-behavior:none}
+#login{min-height:100dvh}
+#app{position:fixed!important;inset:0;width:100%;max-width:100vw;height:100dvh;overflow:hidden;grid-template-columns:260px minmax(0,1fr);grid-template-rows:minmax(0,1fr)}
+@media(max-width:760px){#app{grid-template-columns:minmax(0,1fr)}}
+#main{position:relative;min-width:0;min-height:0;height:100%;overflow:hidden}
+header{flex:none;min-width:0;flex-wrap:nowrap;gap:8px;padding-left:12px;padding-right:12px;position:relative;z-index:30;background:rgba(10,8,12,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+header b{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+header .pill{flex:none;white-space:nowrap}header .btn{flex:none;padding:8px 10px}
+#st{max-width:46vw;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:560px){#mdl,#md{display:none}#st{font-size:0;line-height:0;padding:7px 9px}#st .dot{margin:0;width:10px;height:10px}}
+#msgs{flex:1 1 0;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+#prog,#cs,#bar,#tabs{flex:none}
+.modes{-webkit-overflow-scrolling:touch;scrollbar-width:none}.modes::-webkit-scrollbar{display:none}.modes .btn{flex:none}
+.sheet{max-height:88dvh}#musicPage .musicCard{max-height:88dvh}
+#sdnw{position:relative;height:0;flex:none;z-index:5}
+#sdn{position:absolute;right:14px;bottom:12px;width:42px;height:42px;padding:0;border-radius:50%;border-color:var(--rd);background:#1a0b11;box-shadow:0 6px 22px #000a,0 0 16px rgba(255,42,69,.4);opacity:0;transform:translateY(10px) scale(.8);pointer-events:none;transition:opacity .25s,transform .25s}
+#sdn.show{opacity:1;transform:none;pointer-events:auto}#sdn .ic{margin:0;transform:rotate(0)}
+#mpbtn{min-width:0;display:flex;align-items:center;gap:8px;text-align:left;flex:1;padding:6px 10px}#mpname{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px}.vxchev{color:var(--mu);font-size:12px}
+.mlg{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;flex:none;overflow:hidden;border:1px solid #ffffff1a;box-shadow:inset 0 0 12px #0004}.mlg svg{width:62%;height:62%}.mlg img{width:70%;height:70%;object-fit:contain}
+#mpsheet{position:fixed;inset:0;z-index:88;display:flex;align-items:flex-end;justify-content:center;background:#000b;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}#mpsheet.show{opacity:1;visibility:visible}
+#mpsheet .mpc{width:min(560px,100%);max-height:86dvh;display:flex;flex-direction:column;gap:10px;background:var(--p);border:1px solid var(--ln);border-radius:20px 20px 0 0;padding:14px 14px calc(14px + env(safe-area-inset-bottom));transform:translateY(40px);transition:transform .35s cubic-bezier(.2,1.1,.3,1)}#mpsheet.show .mpc{transform:none}
+#mplist{overflow-y:auto;overscroll-behavior:contain;min-height:0;display:grid;gap:8px;padding:2px;-webkit-overflow-scrolling:touch}
+.mrow{display:flex;gap:11px;align-items:center;padding:9px 10px;border:1px solid var(--ln);border-radius:14px;background:#0d0d12;cursor:pointer;text-align:left;width:100%;min-width:0}.mrow.sel{border-color:var(--rd);background:#2a0d15}.mrow.off{opacity:.6}.mrow.off .mlg{filter:grayscale(1)}
+.mtx{min-width:0;flex:1}.mtx b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px}.mtx small{color:var(--mu);font-size:11.5px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mtx small.er{color:#ff8a9a}
+.mrr{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex:none}
+.bdg{font:700 10px Oxanium,sans-serif;padding:2px 7px;border-radius:99px;border:1px solid var(--ln);letter-spacing:.5px;white-space:nowrap}.bdg.on{color:#7dffb0;border-color:#1f6a43;background:#0c2418}.bdg.offb{color:#ff8a9a;border-color:var(--rd);background:#2a0d15}.bdg.unk{color:var(--mu)}.bdg.vis{color:#9ad0ff;border-color:#27466b;background:#0c1a2a}
+.mck{font-size:11px;padding:3px 8px}.mck.spin{opacity:.6;pointer-events:none}
+.mpt{display:flex;gap:8px;align-items:center}.mpt input{flex:1}
+.kx{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.kx input{flex:2 1 150px}.kx select{flex:1 1 120px;width:auto}
+.kr{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--ln)}.kr>div{min-width:0}
+.kex{font-size:12px}.kex.ok{color:var(--mu)}.kex.soon{color:#ffb86b}.kex.dead{color:#ff7a8a;font-weight:700}
+.epr{display:flex;gap:8px;align-items:center;margin:6px 0}.epr code{flex:1;min-width:0;overflow:auto;white-space:nowrap;background:#07070a;border:1px solid var(--ln);border-radius:8px;padding:6px 8px;font-size:12px}.epr .tg{font:700 10px Oxanium,sans-serif;color:#0a0a0d;background:#ff5a70;border-radius:6px;padding:2px 6px;flex:none}.epr .tg.g{background:#7dffb0}
+.apm{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--ln)}.apm .mlg{width:30px;height:30px;border-radius:9px}.apm .mtx code{font-size:11.5px;color:#ffb0bb;background:none;padding:0}
+#voice{position:fixed;inset:0;z-index:92;display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;text-align:center;background:radial-gradient(circle at 50% 38%,#2a0610f2,#050507f8 70%);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}#voice.show{display:flex}
+.vorb{position:relative;width:160px;height:160px;display:grid;place-items:center;margin-bottom:6px}.vorb i{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(255,42,69,.55);animation:vxVr 2.4s ease-out infinite}.vorb i:nth-child(2){animation-delay:.8s}.vorb i:nth-child(3){animation-delay:1.6s}
+.vcore{width:96px;height:96px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff7a90,#ff2a45 45%,#7a0f20);box-shadow:0 0 54px rgba(255,42,69,.75);display:grid;place-items:center}.vcore .ic{width:38px;height:38px;color:#fff;margin:0}
+#voice[data-s=listening] .vcore{animation:vxVb 1s ease-in-out infinite}#voice[data-s=thinking] .vcore{border-radius:36%;animation:vxVs 1.3s linear infinite}#voice[data-s=speaking] .vcore{animation:vxVsp .45s ease-in-out infinite alternate}#voice[data-s=idle] .vorb i{animation-play-state:paused;opacity:.4}
+#vst{font:700 18px Oxanium,sans-serif;letter-spacing:1px}#vtx{min-height:48px;max-width:min(520px,92vw);color:var(--mu);font-size:14px;overflow-wrap:anywhere}
+.vbt{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+@keyframes vxVr{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.55);opacity:0}}@keyframes vxVb{50%{transform:scale(1.14)}}@keyframes vxVs{to{transform:rotate(360deg)}}@keyframes vxVsp{from{transform:scale(.94)}to{transform:scale(1.12)}}
+#mic.rec,#vm.on{border-color:var(--rd);background:#2a0d15;box-shadow:0 0 14px rgba(255,42,69,.5)}#mic.rec .ic{animation:vxBeat .8s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.vorb i,.vcore{animation:none!important}}
+.row.sr #mpbtn{flex:1 1 180px}.row.sr #aistyle{flex:0 1 auto}.row.sr #modelrefresh{flex:none}#mpall{white-space:nowrap;flex:none}
+@media(max-width:560px){.row.sr{flex-wrap:nowrap;gap:6px}.row.sr label{display:none}.row.sr #aistyle{flex:0 0 40%;max-width:40%!important;min-width:0;padding:8px 6px;font-size:13px}.row.sr #mpbtn{flex:1 1 0}#fc.corner{display:none}}
 </style></head><body>
 <div id="veil"><div class="ld"><span id="vt">MEMUAT</span><div class="bar"><i></i></div></div></div><div class="scene" id="fc" data-cube><div class="cube"><i>V</i><i>X</i><i>AI</i><i>V</i><i>X</i><i>AI</i></div></div><div class="cf" id="cfx"></div><button class="btn" id="sb2" title="Suara & musik"></button>
 <div id="login"><div class="card"><h1 style="text-align:center">VarzXProgramAI</h1><div class="sub" style="text-align:center;margin-bottom:12px">Coding Edition · VxAi_V1-spGlnz</div>
@@ -107,10 +154,10 @@ h1,h2,h3,header b,#veil .ld{font-family:Cinzel,Georgia,serif;letter-spacing:1.5p
 <button class="btn pri" id="nw">+ Chat baru</button><div id="hist"></div><button class="btn" id="acc">Akun</button><button class="btn" id="clr">Hapus semua riwayat</button></aside>
 <div id="main"><header><button class="btn" id="mb" data-ic="menu"></button><b>VarzXProgramAI</b><span class="pill" id="mdl">VxAi_V1-spGlnz</span><span class="pill" id="st"><span class="dot"></span>…</span><span class="pill" id="md">Normal</span><button class="btn" id="sb" title="Suara & musik" style="margin-left:auto"></button><button class="btn" id="dots" data-ic="dots" title="Menu"></button></header>
 <div id="dm"><button data-act="console" data-ic="monitor">Console Monitor</button><button data-act="music" data-ic="spk">Atur Music</button><button data-act="settings" data-ic="gear">Pengaturan</button></div>
-<div id="msgs"></div><div id="prog"></div><div id="cs" title="Buka console penuh"><div id="cl"></div></div>
-<div id="bar"><div class="modes" id="modes"><button class="btn on" data-m="normal" data-ic="chat">Normal</button><button class="btn" data-m="coding" data-ic="code">Coding</button><button class="btn" data-m="thinking" data-ic="think">Structured Thinking</button><button class="btn" data-m="file" data-ic="file">File Analysis</button><button class="btn" data-m="project" data-ic="box">Project/ZIP</button><button class="btn" id="ws" data-ic="globe" hidden>Web</button></div>
-<div class="row" style="margin:6px 0"><label class="sub" for="aistyle">Gaya bahasa</label><select id="aistyle" class="btn" style="max-width:150px"><option value="gaul">Gaul / santai</option><option value="normal">Biasa / profesional</option></select><label class="sub" for="modelpick">Model AI</label><select id="modelpick" class="btn" aria-label="Pilih model AI" style="max-width:100%;flex:1"><option value="auto">Auto — pilih otomatis</option></select><button class="btn" id="modelrefresh" title="Muat ulang model">↻</button></div>
-<div class="row"><label class="btn" id="fl" data-ic="clip" hidden><input type="file" id="f" hidden accept=".jpg,.jpeg,.png,.webp,.mp4,.webm,.mov,.pdf,.zip,.txt,.md,.py,.js,.ts,.jsx,.tsx,.html,.css,.json,.xml,.yaml,.yml,.toml,.sql,.java,.c,.cpp,.go,.rs,.php,.sh"></label><textarea id="in" rows="1" placeholder="Tulis pesan…"></textarea><button class="btn pri" id="go">Kirim</button><button class="btn" id="stop" hidden>Stop</button></div><div class="sub" id="fn" style="max-width:860px;margin:4px auto 0"></div></div>
+<div id="msgs"></div><div id="sdnw"><button class="btn" id="sdn" data-ic="down" aria-label="Ke pesan terbaru"></button></div><div id="prog"></div><div id="cs" title="Buka console penuh"><div id="cl"></div></div>
+<div id="bar"><div class="modes" id="modes"><button class="btn on" data-m="normal" data-ic="chat">Normal</button><button class="btn" data-m="coding" data-ic="code">Coding</button><button class="btn" data-m="thinking" data-ic="think">Structured Thinking</button><button class="btn" data-m="file" data-ic="file">File Analysis</button><button class="btn" data-m="vision" data-ic="img">Vision</button><button class="btn" data-m="video" data-ic="vid">Video</button><button class="btn" data-m="project" data-ic="box">Project/ZIP</button><button class="btn" id="vm" data-ic="wave" hidden>Mode Suara</button><button class="btn" id="ws" data-ic="globe" hidden>Web</button></div>
+<div class="row sr" style="margin:6px auto"><label class="sub" for="aistyle">Gaya bahasa</label><select id="aistyle" class="btn" style="max-width:150px"><option value="gaul">Gaul / santai</option><option value="normal">Biasa / profesional</option></select><label class="sub" for="modelpick">Model AI</label><input type="hidden" id="modelpick" value="auto"><button class="btn" id="mpbtn" type="button" aria-haspopup="dialog" aria-label="Pilih model AI"><span id="mpico"></span><span id="mpname">Auto — pilih otomatis</span><span class="vxchev">▾</span></button><button class="btn" id="modelrefresh" title="Muat ulang model">↻</button></div>
+<div class="row"><label class="btn" id="fl" data-ic="clip" hidden><input type="file" id="f" hidden accept=".jpg,.jpeg,.png,.webp,.mp4,.webm,.mov,.pdf,.zip,.txt,.md,.py,.js,.ts,.jsx,.tsx,.html,.css,.json,.xml,.yaml,.yml,.toml,.sql,.java,.c,.cpp,.go,.rs,.php,.sh"></label><button class="btn" id="mic" data-ic="mic" title="Dikte suara" aria-label="Dikte suara" hidden></button><textarea id="in" rows="1" placeholder="Tulis pesan…"></textarea><button class="btn pri" id="go">Kirim</button><button class="btn" id="stop" hidden>Stop</button></div><div class="sub" id="fn" style="max-width:860px;margin:4px auto 0"></div></div>
 <nav id="tabs"><button data-act="console" data-ic="monitor"><span>Console</span></button><button data-act="account" data-ic="user"><span>Akun</span></button><button data-act="api" data-ic="key"><span>API</span></button><button data-act="tab" data-ic="layout"><span>Tab</span></button><button data-act="music" data-ic="spk"><span>Music</span></button></nav></div>
 <div id="bub"><div id="bm"></div><button id="bb" aria-label="Menu cube"><span class="bsig"></span><div class="scene" data-cube="nodrag"><div class="cube"><i>V</i><i>X</i><i>AI</i><i>V</i><i>X</i><i>AI</i></div></div></button></div></div>
 
@@ -118,6 +165,8 @@ h1,h2,h3,header b,#veil .ld{font-family:Cinzel,Georgia,serif;letter-spacing:1.5p
 <div class="stabs"><button class="btn" data-s="account" data-ic="user">Account</button><button class="btn" data-s="api" data-ic="key">API Key</button><button class="btn" data-s="tab" data-ic="layout">Tab</button></div><div id="sc"></div></div></div>
 <div id="musicPage" role="dialog" aria-modal="true" aria-label="Atur Music"><div class="musicCard"><div class="shh"><b style="font-family:Cinzel,serif">Atur Music</b><button class="btn" id="musicClose">Tutup</button></div><p class="sub">Pilih lagu, atur mode pemutaran, atau minta AI memutarkannya dari chat.</p><div class="row" style="margin:10px 0"><label class="sub" for="musicMode">Mode pemutaran</label><select id="musicMode" style="flex:1"><option value="sequence">Pindah lagu secara berurutan dan otomatis</option><option value="repeat">Tetap di music itu dan putar berulang kali</option></select></div><div id="musicList"><div class="sub">Memuat daftar musik…</div></div><div class="row"><button class="btn" id="musicPrev">⏮ Sebelumnya</button><button class="btn pri" id="musicPlay">▶ Putar</button><button class="btn" id="musicNext">Berikutnya ⏭</button></div><div class="sub" id="musicStatus" style="margin-top:8px">Musik belum diputar.</div></div></div>
 <div id="con"><div class="ch"><b data-ic="monitor" style="font-family:Cinzel,serif;letter-spacing:1.5px"> Console Monitor</b><span class="sub" id="cn"></span><span style="flex:1"></span><button class="btn on" data-f="all">Semua</button><button class="btn" data-f="info">Info</button><button class="btn" data-f="warn">Warn</button><button class="btn" data-f="error">Error</button><button class="btn" id="cc" data-ic="trash"></button><button class="btn" id="cy" data-ic="copy"></button><button class="btn" id="cx" data-ic="close"></button></div><div id="cb"></div></div>
+<div id="mpsheet" role="dialog" aria-modal="true" aria-label="Pilih model AI"><div class="mpc"><div class="shh" style="margin:0"><b style="font-family:Cinzel,serif;letter-spacing:1.5px">Pilih Model AI</b><button class="btn" id="mpclose" data-ic="close"></button></div><div class="mpt"><input id="mpq" placeholder="Cari model…" autocomplete="off"><label class="sub" style="white-space:nowrap;display:flex;gap:6px;align-items:center"><input type="checkbox" id="mpvis" style="width:auto"> Vision</label></div><div class="mpt"><button class="btn" id="mpall">Cek status semua</button><span class="sub">ON = bisa dipakai · OFF = sedang bermasalah · ? = belum dicek</span></div><div id="mplist"></div></div></div>
+<div id="voice" data-s="idle" role="dialog" aria-modal="true" aria-label="Mode Suara"><div class="vorb"><i></i><i></i><i></i><div class="vcore" data-ic="mic"></div></div><div id="vst">Siap</div><div id="vtx"></div><div class="vbt"><button class="btn" id="vtalk">Bicara</button><button class="btn" id="vskip">Lewati suara</button><button class="btn pri" id="vx">Keluar</button></div></div>
 <script>
 "use strict";
 const sleep=ms=>new Promise(r=>setTimeout(r,ms)),RM=matchMedia("(prefers-reduced-motion:reduce)").matches,$=s=>document.querySelector(s),LS=localStorage;const PROXY_TARGET="http://lunaris-node-free.hostkita.help:20231",PROXY_PATH="/vx-proxy";const BACKEND_URL=PROXY_TARGET;/* Backend HTTP otomatis lewat proxy Vercel (/vx-proxy, lihat vercel.json) saat halaman HTTPS. */
@@ -131,6 +180,10 @@ function clog(l,m){m=String(m).replace(/(vx-[A-Za-z0-9_-]{8,}|sk-[A-Za-z0-9]{12,
 addEventListener("error",e=>clog("error",e.message+" ("+String(e.filename||"").split("/").pop()+":"+e.lineno+")"));addEventListener("unhandledrejection",e=>clog("error","Promise ditolak: "+(e.reason&&e.reason.message||e.reason)));
 const P={dots:'<circle class="f" cx="12" cy="5" r="1.7"/><circle class="f" cx="12" cy="12" r="1.7"/><circle class="f" cx="12" cy="19" r="1.7"/>',monitor:'<rect x="3" y="4" width="18" height="12"/><path d="M8 20h8M12 16v4M7 8l3 2-3 2M12 12h4"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.900 4.900l2.100 2.100M17 17l2.100 2.100M19.100 4.900L17 7M7 17l-2.100 2.100"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.500 3.500-7 8-7s8 2.500 8 7"/>',key:'<circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3M14 9l2 2"/>',layout:'<rect x="3" y="4" width="18" height="16"/><path d="M3 15h18M8 15v5M16 15v5"/>',cube3:'<path d="M12 2l9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10"/>',logout:'<path d="M9 4H4v16h5M16 8l4 4-4 4M20 12H9"/>',copy:'<rect x="8" y="8" width="12" height="12"/><path d="M4 16V4h12"/>',trash:'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',plus:'<path d="M12 5v14M5 12h14"/>',close:'<path d="M5 5l14 14M19 5L5 19"/>',menu:'<path d="M3 6h18M3 12h18M3 18h18"/>',clip:'<path d="M20 11l-8 8a5 5 0 0 1-7-7l8-8a3.5 3.5 0 0 1 5 5l-8 8a2 2 0 0 1-3-3l7-7"/>',globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3.5 3.5 3.5 14.500 0 18M12 3c-3.500 3.500-3.500 14.500 0 18"/>',down:'<path d="M12 4v11M7 11l5 5 5-5M5 20h14"/>',spk:'<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9c1.500 1.500 1.500 4.500 0 6M19 6c3 3 3 9 0 12"/>',spkoff:'<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 9l5 6M22 9l-5 6"/>',chat:'<path d="M4 5h16v11H9l-5 4z"/>',code:'<path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 5l-4 14"/>',think:'<path d="M12 2l9 10-9 10-9-10z"/><path d="M12 8v8M8 12h8"/>',file:'<path d="M6 3h8l4 4v14H6zM14 3v4h4"/>',box:'<path d="M12 3l8 4v10l-8 4-8-4V7zM4 7l8 4 8-4M12 11v10"/>'};
 const ic=n=>'<svg class="ic" viewBox="0 0 24 24">'+P[n]+'</svg>';
+/* ===== VX2 (A): ikon baru + state ===== */
+Object.assign(P,{mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/>',wave:'<path d="M3 12h2M7 8v8M11 4v16M15 8v8M19 10v4M21 12h0"/>',refresh:'<path d="M20 11a8 8 0 1 0-2.300 5.700M20 4v7h-7"/>',stopi:'<rect x="6" y="6" width="12" height="12" rx="2"/>',spkon:'<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6M18.500 6.500a8 8 0 0 1 0 11"/>',img:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 9"/>',vid:'<rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/>'});
+let stick=true,MODELS=[];const isFM=m=>m==="file"||m==="vision"||m==="video",VO={on:false,s:"idle"};
+
 const SIG=w=>'<svg class="sig" viewBox="0 0 64 64" width="'+w+'" height="'+w+'"><path d="M32 58 10 22h44z" fill="none" stroke="#ff2a45" stroke-width="3" stroke-linejoin="miter"/><path d="M10 22C6 14 8 8 14 4c-1 8 4 12 10 14M54 22c4-8 2-14-4-18 1 8-4 12-10 14" fill="none" stroke="#ff2a45" stroke-width="3" stroke-linecap="round"/><path d="M32 29l5 5-5 5-5-5z" fill="#ff2a45"/></svg>';
 function toast(t){let e=$("#toast");if(!e){e=document.createElement("div");e.id="toast";document.body.append(e)}e.textContent=t;e.hidden=false;clearTimeout(e._t);e._t=setTimeout(()=>e.hidden=true,6000)}
 const AU={on:LS.vx_snd!=="0",ok:false,duck:false,err:false,ctx:null,bgm:new Audio("music.mp3"),bot:new Audio("bot-music.mp3")};
@@ -173,7 +226,7 @@ function cubes(){document.querySelectorAll("[data-cube]").forEach(sc=>{const c=s
  sc.onpointermove=e=>{if(!dr)return;ry+=(e.clientX-lx)*.8;rx-=(e.clientY-ly)*.8;lx=e.clientX;ly=e.clientY};
  if(sc.dataset.cube==="nodrag")sc.onpointerdown=sc.onpointermove=sc.onpointerup=null;(function t(){if(sc.getClientRects().length){if(auto&&!dr)ry+=sc.dataset.fast?9:.5;c.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`}if(!document.hidden)requestAnimationFrame(t);else setTimeout(t,500)})()})}
 async function api(path,o={}){if(!base)throw new Error("URL backend belum diisi.");if(eff(base)===null)throw new Error("Backend HTTP tidak bisa dipakai dari halaman HTTPS. Gunakan URL HTTPS atau proxy Vercel.");const t0=performance.now(),mt=o.method||"GET",tc=new AbortController();let to=false;
- const tm=setTimeout(()=>{to=true;tc.abort()},mt==="POST"&&/^\/v1\/(chat|files|projects)/.test(path)?150000:15000);if(o.signal)o.signal.addEventListener("abort",()=>tc.abort());
+ const tm=setTimeout(()=>{to=true;tc.abort()},mt==="POST"&&/^\/v1\/(chat|files|projects|vision)/.test(path)?150000:(path==="/v1/models/ping"?30000:15000));if(o.signal)o.signal.addEventListener("abort",()=>tc.abort());
  clog("net","→ "+mt+" "+path);o=Object.assign({},o,{signal:tc.signal,headers:Object.assign({},o.headers,tok?{Authorization:"Bearer "+tok}:{})});
  let r;try{r=await fetch(eff(base)+path,o)}catch(e){clearTimeout(tm);if(to){clog("error","Timeout: "+path);throw new Error("Backend tidak merespons (timeout). Periksa server/URL.")}if(e.name==="AbortError"){clog("warn","Dibatalkan: "+path);throw e}clog("error","Gagal terhubung: "+path+" (URL/HTTPS/CORS?)");throw new Error("Tidak dapat terhubung ke backend (periksa URL, HTTPS, dan CORS).")}
  clearTimeout(tm);
@@ -184,7 +237,7 @@ async function api(path,o={}){if(!base)throw new Error("URL backend belum diisi.
 async function loadModels(){const sel=$("#modelpick");if(!sel||!tok||!base)return;const old=sel.value;try{const r=await(await api("/v1/models")).json();const rows=r.data||[];sel.innerHTML=rows.map(m=>`<option value="${esc(m.id)}">${esc(m.name||m.id)}</option>`).join("")||'<option value="auto">Auto — pilih otomatis</option>';if(rows.some(m=>m.id===old))sel.value=old;clog("ok","Katalog model dimuat: "+rows.length)}catch(e){sel.innerHTML='<option value="auto">Auto — pilih otomatis</option>';clog("warn","Katalog model belum tersedia: "+e.message)}}
 $("#modelrefresh")?.addEventListener("click",loadModels);
 async function status(){const s=$("#st");try{const h=await(await api("/health")).json();caps=await(await api("/v1/capabilities")).json();await loadModels();
- s.innerHTML=`<span class="dot ${caps.chat?"ok":"bad"}"></span>${caps.chat?"Online · AI siap":"Online · AI belum dikonfigurasi"}`;clog(caps.chat?"ok":"warn",caps.chat?"Backend online · AI siap":"Backend online · AI belum dikonfigurasi");$("#ws").hidden=!caps.web_search;if(caps.web_search&&!window.wsi){window.wsi=1;web=true;$("#ws").classList.add("on")}}catch(e){s.innerHTML='<span class="dot bad"></span>Offline';caps={}}}
+ s.innerHTML=`<span class="dot ${caps.chat?"ok":"bad"}"></span>${caps.chat?"Online · AI siap":"Online · AI belum dikonfigurasi"}`;clog(caps.chat?"ok":"warn",caps.chat?"Backend online · AI siap":"Backend online · AI belum dikonfigurasi");s.title=caps.chat?"Online · AI siap":"Online · AI belum dikonfigurasi";$("#ws").hidden=!caps.web_search;if(caps.web_search&&!window.wsi){window.wsi=1;web=true;$("#ws").classList.add("on")}}catch(e){s.innerHTML='<span class="dot bad"></span>Offline';s.title="Offline";caps={}}}
 function setReg(v){reg=v;$("#tl").classList.toggle("on",!v);$("#tr").classList.toggle("on",v);$("#ln").hidden=$("#lhint").hidden=!v;$("#lgo").textContent=v?"Daftar":"Masuk";$("#lp").autocomplete=v?"new-password":"current-password";$("#lerr").textContent=""}
 $("#tl").onclick=()=>setReg(false);$("#tr").onclick=()=>setReg(true);$("#om").onclick=e=>{e.preventDefault();$("#ob").hidden=!$("#ob").hidden;$("#ou").value=base};
 $("#lgo").onclick=async()=>{const err=$("#lerr");err.textContent="";const custom=$("#ob").hidden?"":$("#ou").value.trim().replace(/\/+$/,""),old=base;if(custom)base=custom;
@@ -219,7 +272,7 @@ function md(t){const parts=String(t).split(/```/);return parts.map((p,i)=>{if(i%
  return esc(p).replace(/^### (.*)$/gm,"<h4>$1</h4>").replace(/^## (.*)$/gm,"<h3>$1</h3>").replace(/^# (.*)$/gm,"<h3>$1</h3>").replace(/\*\*(.+?)\*\*/g,"<b>$1</b>").replace(/`([^`\n]+)`/g,"<code>$1</code>").replace(/^[-*] (.*)$/gm,"• $1").replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,'<a href="$2" target="_blank" rel="noopener noreferrer" style="color:#ff8a9a">$1</a>').replace(/\n/g,"<br>")}).join("")}
 function render(){const box=$("#msgs");box.innerHTML="";$("#hist").innerHTML="";chats.forEach(c=>{const d=document.createElement("div");d.className="h"+(c===cur?" on":"");d.textContent=c.t;d.onclick=()=>{cur=c;render();$("#side").classList.remove("open")};$("#hist").append(d)});
  if(!cur.m.length)box.innerHTML='<div class="empty">'+SIG(64)+'<h2>VarzXProgramAI</h2>Tanyakan kode, upload file, atau buat proyek ZIP.</div>';
- cur.m.forEach((m,i)=>{const el=bubble(m,i);box.append(el);if(i===newIdx&&!RM){el.classList.add("in");if(m.r!=="user"&&!m.err)typeIn(el,box)}});newIdx=-1;if(busy)box.append(thinkEl());box.scrollTop=box.scrollHeight}
+ cur.m.forEach((m,i)=>{const el=bubble(m,i);box.append(el);if(i===newIdx&&!RM){el.classList.add("in");if(m.r!=="user"&&!m.err)typeIn(el,box)}});newIdx=-1;if(busy)box.append(thinkEl());stick=true;box.scrollTop=box.scrollHeight}
 
 /* ===== VarzX FX: proxy URL, animasi chat, loading AI ===== */
 let newIdx=-1,thinkNode=null,thinkTimer=null;
@@ -237,10 +290,10 @@ function typeIn(el,box){
   const c=Math.min(total,Math.floor(total*Math.min(1,(now-t0)/dur)));
   while(shown<c&&ni<nodes.length){const nd=nodes[ni],take=Math.min(nd[1].length-off,c-shown);off+=take;shown+=take;nd[0].nodeValue=nd[1].slice(0,off);if(off>=nd[1].length){ni++;off=0}}
   const lastN=nodes[Math.min(ni,nodes.length-1)][0];lastN.parentNode.insertBefore(caret,lastN.nextSibling);
-  if(box.scrollHeight-box.scrollTop-box.clientHeight<160)box.scrollTop=box.scrollHeight;
+  if(stick)box.scrollTop=box.scrollHeight;
   if(shown>=total)finish();else requestAnimationFrame(step)};
  requestAnimationFrame(step)}
-const THINK={normal:["Membaca pertanyaanmu","Merangkai jawaban","Merapikan kalimat"],coding:["Membaca konteks kode","Menyusun solusi","Mengecek logika & edge case","Menulis kode"],thinking:["Memecah masalah","Menimbang beberapa sudut","Menyusun langkah terstruktur"],file:["Membuka file","Membaca isi dokumen","Menganalisis temuan"],project:["Merancang struktur proyek","Menulis file satu per satu","Mengemas ZIP"]};
+const THINK={vision:["Membaca gambar","Mengenali objek & teks","Menyusun penjelasan"],video:["Mengambil frame video","Membaca tiap frame","Merangkum kejadian"],normal:["Membaca pertanyaanmu","Merangkai jawaban","Merapikan kalimat"],coding:["Membaca konteks kode","Menyusun solusi","Mengecek logika & edge case","Menulis kode"],thinking:["Memecah masalah","Menimbang beberapa sudut","Menyusun langkah terstruktur"],file:["Membuka file","Membaca isi dokumen","Menganalisis temuan"],project:["Merancang struktur proyek","Menulis file satu per satu","Mengemas ZIP"]};
 function thinkEl(){if(thinkNode)return thinkNode;
  const d=document.createElement("div");d.className="m a think";
  d.innerHTML='<div class="tk-row"><div class="vxcube3d"><div class="vxcube"><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="vxring"></span><span class="vxring r2"></span></div><div class="tk-txt"><div class="tk-lbl"><span class="tk-t">Memikirkan…</span><span class="vxwave"><b></b><b></b><b></b></span></div><div class="tk-sub"><span class="tk-m"></span><span class="tk-s">0.0s</span></div></div></div><div class="vxskel"><i style="width:92%"></i><i style="width:78%"></i><i style="width:55%"></i></div>';
@@ -249,7 +302,7 @@ function syncThink(){
  if(busy){const d=thinkEl();const box=$("#msgs");if(box&&d.parentNode!==box){box.append(d);box.scrollTop=box.scrollHeight}
   if(!thinkTimer){const t0=performance.now();let k=-1;const tick=()=>{const arr=(THINK[mode]||THINK.normal).slice();if(web)arr.unshift("Mencari di web");
     const e=(performance.now()-t0)/1000;d.querySelector(".tk-s").textContent=e.toFixed(1)+"s";
-    d.querySelector(".tk-m").textContent=({normal:"Normal",coding:"Coding",thinking:"Structured Thinking",file:"File Analysis",project:"Project/ZIP"})[mode]+(web?" · Web":"");
+    d.querySelector(".tk-m").textContent=(MODE_LBL[mode]||mode)+(web?" · Web":"");
     const idx=Math.min(arr.length-1,Math.floor(e/2.4));if(idx!==k){k=idx;const t=d.querySelector(".tk-t");t.classList.remove("swap");void t.offsetWidth;t.textContent=arr[idx]+"…";t.classList.add("swap")}};
    tick();thinkTimer=setInterval(tick,100)}}
  else{clearInterval(thinkTimer);thinkTimer=null;if(thinkNode){thinkNode.remove();thinkNode=null}}}
@@ -325,13 +378,12 @@ function bubble(m,i){const d=document.createElement("div");d.className="m "+(m.r
   if(m.err||i===cur.m.length-1){const r=document.createElement("button");r.className="btn";r.textContent="Ulangi";r.onclick=()=>{cur.m.splice(i);const l=cur.m.pop();if(l){$("#in").value=l.c;send()}};t.append(r)}d.append(t)}return d}
 async function dl(z,b){b.disabled=true;try{const r=await api(z.download),u=URL.createObjectURL(await r.blob()),a=document.createElement("a");a.href=u;a.download=z.name+".zip";a.click();setTimeout(()=>URL.revokeObjectURL(u),5000)}catch(e){alert(e.message)}b.disabled=false}
 function setBusy(v){botMusic(v);busy=v;syncThink();$("#go").hidden=v;$("#stop").hidden=!v;$("#prog").style.width=v?"60%":"0"}
-function push(m){snd(m.r==="user"?"send":m.err?"err":"recv");if(m.r!=="user")clog(m.err?"error":"ok",m.err?m.c:"Jawaban diterima ("+m.c.length+" karakter)");cur.m.push(m);newIdx=cur.m.length-1;if(cur.t==="Chat baru"&&m.r==="user")cur.t=m.c.slice(0,40);save();render()}
+function push(m){snd(m.r==="user"?"send":m.err?"err":"recv");if(m.r!=="user")clog(m.err?"error":"ok",m.err?m.c:"Jawaban diterima ("+m.c.length+" karakter)");cur.m.push(m);newIdx=cur.m.length-1;if(cur.t==="Chat baru"&&m.r==="user")cur.t=m.c.slice(0,40);save();render();if(VO.on&&m.r!=="user")voiceSpeak(m)}
 async function send(){if(busy)return;const txt=$("#in").value.trim(),file=$("#f").files[0];
- if(mode==="file"&&!file){push({r:"assistant",c:"Pilih file dengan tombol lampiran (ikon klip) terlebih dahulu.",err:1});return}if(!txt&&!file)return;
+ if(isFM(mode)&&!file){push({r:"assistant",c:"Pilih file dengan tombol lampiran (ikon klip) terlebih dahulu.",err:1});return}if(!txt&&!file)return;
  if(txt&&!file){const mc=musicCommand(txt);if(mc){$("#in").value="";push({r:"user",c:txt});push({r:"assistant",c:mc});return}}
  $("#in").value="";ctrl=new AbortController();setBusy(true);clog("info","Kirim: mode="+mode+(web?" +web":"")+" · "+txt.length+" karakter"+(file?" · file "+file.name+" ("+(file.size/1024|0)+" KB)":""));push({r:"user",c:(file?"[Lampiran] "+file.name+"\n":"")+txt});
- try{if(mode==="file"){if(file.size>(caps.max_upload_mb||20)*1048576)throw new Error("File terlalu besar.");const fd=new FormData();fd.append("file",file);fd.append("question",txt||"Analisis file ini.");
-   const r=await(await api("/v1/files/analyze",{method:"POST",body:fd,signal:ctrl.signal})).json();push({r:"assistant",c:r.content})}
+ try{if(isFM(mode)){const r=await fileAnalyze(file,txt);push({r:"assistant",c:r.content})}
   else if(mode==="project"){const r=await(await api("/v1/projects",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({prompt:txt}),signal:ctrl.signal})).json();
    push({r:"assistant",c:`Proyek **${r.name}** dibuat (${r.files.length} file, ${r.bytes} B):\n`+r.files.map(f=>"• "+f).join("\n")+"\n\n"+r.note,zip:{download:r.download,name:r.name}})}
   else{const h=cur.m.filter(m=>!m.err).slice(-20).map(m=>({role:m.r,content:m.c}));
@@ -345,7 +397,7 @@ function setMode(m){mode=m;clog("info","Mode: "+m);document.querySelectorAll("#m
 document.querySelectorAll("#modes [data-m]").forEach(b=>b.onclick=()=>setMode(b.dataset.m));
 $("#ws").onclick=()=>{web=!web;clog("info","Web search: "+(web?"on":"off"));$("#ws").classList.toggle("on",web)};$("#nw").onclick=newChat;$("#mb").onclick=()=>$("#side").classList.toggle("open");
 $("#clr").onclick=()=>{if(confirm("Hapus semua riwayat lokal?")){chats=[];save();newChat()}};
-let navMode=LS.vx_nav||"dots",stabNow="account";
+if(LS.vx_nav_v!=="2"){LS.vx_nav="tab";LS.vx_nav_v="2"}let navMode=LS.vx_nav||"tab",stabNow="account";
 const closeMenus=()=>{$("#dm").classList.remove("show");$("#bub").classList.remove("open")};
 function openCon(){closeMenus();$("#con").classList.add("show");$("#cn").textContent=LOG.length+" baris";conR();snd("on")}
 function closeCon(){$("#con").classList.remove("show")}
@@ -388,4 +440,130 @@ $("#cy").onclick=()=>navigator.clipboard.writeText(LOG.filter(pass).map(e=>new D
 document.querySelectorAll("#con [data-f]").forEach(b=>b.onclick=()=>{lf=b.dataset.f;document.querySelectorAll("#con [data-f]").forEach(x=>x.classList.toggle("on",x===b));conR()});
 addEventListener("pointerdown",e=>{if(!e.target.closest("#dm,#dots,#bub"))closeMenus()});addEventListener("keydown",e=>{if(e.key==="Escape"){closeSet();closeCon();closeMenus()}});
 clog("info","VarzXProgramAI siap · backend "+(base||"belum diset"));boot();
+
+/* ===== VX2 (B): auto scroll, model picker + logo, API key, vision/video, mode suara ===== */
+const msgsEl=$("#msgs"),nearBottom=()=>msgsEl.scrollHeight-msgsEl.scrollTop-msgsEl.clientHeight<90;
+msgsEl.addEventListener("scroll",()=>{stick=nearBottom();$("#sdn").classList.toggle("show",!stick)},{passive:true});
+$("#sdn").onclick=()=>{stick=true;msgsEl.scrollTo({top:msgsEl.scrollHeight,behavior:RM?"auto":"smooth"});$("#sdn").classList.remove("show")};
+/* ikut menggulung saat isi bertambah (gambar/teks panjang), kecuali pengguna sedang membaca ke atas */
+new MutationObserver(()=>{if(stick)msgsEl.scrollTop=msgsEl.scrollHeight}).observe(msgsEl,{childList:true,subtree:true,characterData:true});
+
+/* --- logo model (simbol sederhana buatan sendiri; bisa diganti lewat window.VX_LOGOS = {keluarga:"data:image/svg+xml,..."}) --- */
+const LG={
+ auto:["linear-gradient(135deg,#ff2a45,#7a0f20)",'<path d="M12 3.500l7.500 4.200v8.600L12 20.500l-7.500-4.200V7.700z"/><path d="M12 12l7.500-4.300M12 12v8.500M12 12 4.500 7.700"/>'],
+ openai:["#10a37f",[0,60,120,180,240,300].map(a=>`<ellipse cx="12" cy="7.300" rx="2.300" ry="4.200" transform="rotate(${a} 12 12)"/>`).join("")],
+ anthropic:["#d97757",'<path d="M6.500 19 12 5l5.500 14M8.800 14h6.400" stroke-width="2"/>'],
+ google:["linear-gradient(135deg,#4285f4,#a142f4)",'<path fill="#fff" stroke="none" d="M12 3c.8 5 4 8.200 9 9-5 .8-8.200 4-9 9-.8-5-4-8.200-9-9 5-.8 8.200-4 9-9z"/>'],
+ meta:["#0866ff",'<path stroke-width="2" d="M3.500 12c0-2.200 1.200-4 3-4 3.500 0 5.500 8 9.500 8 1.800 0 3-1.800 3-4s-1.200-4-3-4c-4 0-6 8-9.500 8-1.800 0-3-1.800-3-4z"/>'],
+ mistral:["#fa520f",'<g fill="#fff" stroke="none"><rect x="4" y="5" width="4" height="4"/><rect x="16" y="5" width="4" height="4"/><rect x="4" y="10" width="4" height="4"/><rect x="10" y="10" width="4" height="4"/><rect x="16" y="10" width="4" height="4"/><rect x="4" y="15" width="4" height="4"/><rect x="16" y="15" width="4" height="4"/></g>'],
+ deepseek:["#4d6bfe",'<path fill="#fff" stroke="none" d="M3.500 13.500c1.800-5.200 8-7.300 13-4.200 1.500.9 2.600 2.300 3.200 3.900-1.800-.9-3 .1-4 1.500-1.800 2.600-7.700 3.700-12.200-1.200z"/><circle cx="15.300" cy="11.200" r="1" fill="#4d6bfe" stroke="none"/>'],
+ qwen:["#615ced",'<circle cx="11" cy="11" r="5.500" stroke-width="2"/><path d="M14.500 14.500 19 19" stroke-width="2"/>'],
+ xai:["#111",'<path d="M5 5l14 14M19 5 5 19" stroke-width="2"/>'],
+ microsoft:["#2b2b30",'<g stroke="none"><rect x="4.500" y="4.500" width="7" height="7" fill="#f25022"/><rect x="12.500" y="4.500" width="7" height="7" fill="#7fba00"/><rect x="4.500" y="12.500" width="7" height="7" fill="#00a4ef"/><rect x="12.500" y="12.500" width="7" height="7" fill="#ffb900"/></g>'],
+ nvidia:["#76b900",'<path stroke="#000" stroke-width="2" d="M3 12s3.500-6 9-6 9 6 9 6-3.500 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.600" fill="#000" stroke="none"/>'],
+ cohere:["#39594d",'<circle cx="9" cy="12" r="4"/><circle cx="16.500" cy="12" r="2.500"/>'],
+ zhipu:["#3859ff",'<path d="M6 6h12L6 18h12" stroke-width="2"/>'],
+ moonshot:["#16191e",'<path d="M8 5v14M8 12l8-7M8 12l8 7" stroke-width="2"/>']};
+const ORG={openai:"openai",anthropic:"anthropic",google:"google","meta-llama":"meta",meta:"meta",mistralai:"mistral",deepseek:"deepseek",qwen:"qwen","x-ai":"xai",microsoft:"microsoft",nvidia:"nvidia",cohere:"cohere","z-ai":"zhipu",thudm:"zhipu",moonshotai:"moonshot"};
+const FAM=[["openai",/gpt|chatgpt|openai|\bo[134](-|\b)/],["anthropic",/claude|anthropic/],["google",/gemini|gemma|palm|google/],["deepseek",/deepseek/],["qwen",/qwen|qwq/],["meta",/llama|meta-/],["mistral",/mistral|mixtral|codestral|pixtral|ministral/],["xai",/grok|x-ai/],["microsoft",/\bphi-?\d|microsoft|wizardlm/],["nvidia",/nemotron|nvidia/],["cohere",/command|cohere/],["zhipu",/glm|zhipu|z-ai|thudm/],["moonshot",/kimi|moonshot/]];
+function famOf(m){if(!m||m.id==="auto")return"auto";const raw=String(m.id).split("::")[1]||String(m.id),org=raw.includes("/")?raw.split("/")[0].toLowerCase():"";if(ORG[org])return ORG[org];const t=(raw+" "+(m.name||"")).toLowerCase();for(const f of FAM)if(f[1].test(t))return f[0];return"mono"}
+const cleanName=m=>String(m&&(m.name||m.id)||"Auto").replace(/^(Xkiro|OpenRouter)\s*·\s*/,"");
+function logoHTML(m,sz){sz=sz||38;const f=famOf(m),ov=window.VX_LOGOS&&window.VX_LOGOS[f],L=LG[f],st=`width:${sz}px;height:${sz}px;`;
+ if(ov)return`<span class="mlg" style="${st}background:#111"><img src="${esc(ov)}" alt=""></span>`;
+ if(L)return`<span class="mlg" style="${st}background:${L[0]}"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${L[1]}</svg></span>`;
+ const h=[...String(m&&m.id||"?")].reduce((a,c)=>(a*31+c.charCodeAt(0))>>>0,7)%360;return`<span class="mlg" style="${st}background:hsl(${h} 55% 36%);color:#fff;font:800 ${Math.round(sz*.45)}px Oxanium,sans-serif">${esc(cleanName(m)[0]||"?").toUpperCase()}</span>`}
+const stB=m=>m.status==="on"?`<span class="bdg on">ON${m.latency_ms?" · "+m.latency_ms+"ms":""}</span>`:m.status==="off"?'<span class="bdg offb">OFF</span>':'<span class="bdg unk" title="Belum dicek">?</span>';
+
+/* --- pemilih model buatan sendiri --- */
+const curModel=()=>MODELS.find(m=>m.id===$("#modelpick").value)||MODELS[0]||{id:"auto",name:"Auto — pilih otomatis",status:"unknown"};
+function mpBtn(){const m=curModel();$("#mpico").innerHTML=logoHTML(m,26);$("#mpname").textContent=cleanName(m)+(m.status==="off"?" · OFF":"")}
+async function loadModels(){if(!tok||!base)return;const old=$("#modelpick").value||LS.vx_model||"auto";
+ try{const r=await(await api("/v1/models")).json();MODELS=(r.data||[]).filter(m=>m&&m.id);if(!MODELS.length)throw new Error("katalog kosong");$("#modelpick").value=MODELS.some(m=>m.id===old)?old:"auto";clog("ok","Katalog model dimuat: "+MODELS.length+" ("+MODELS.filter(m=>m.status==="on").length+" ON, "+MODELS.filter(m=>m.status==="off").length+" OFF)")}
+ catch(e){MODELS=[{id:"auto",name:"Auto — pilih otomatis",status:"unknown"}];$("#modelpick").value="auto";clog("warn","Katalog model belum tersedia: "+e.message)}
+ mpBtn();mpRender()}
+async function pingModel(id){const m=MODELS.find(x=>x.id===id);if(!m||m.ping)return;m.ping=1;mpRender();
+ try{const r=await(await api("/v1/models/ping",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:id})})).json();m.status=r.status;m.latency_ms=r.ms||0;m.error=r.error||null;clog(r.status==="on"?"ok":"warn","Model "+cleanName(m)+": "+String(r.status).toUpperCase()+(r.ms?" · "+r.ms+"ms":"")+(r.error?" · "+r.error:""))}
+ catch(e){m.status="off";m.error=e.message}
+ m.ping=0;mpRender();mpBtn()}
+async function pingAll(){const ids=MODELS.filter(m=>m.id!=="auto"&&(!$("#mpvis").checked||m.vision)&&m.status!=="on").slice(0,15).map(m=>m.id);let i=0;await Promise.all([0,1,2].map(async()=>{while(i<ids.length)await pingModel(ids[i++])}));toast("Pengecekan selesai")}
+function mpRender(){const L=$("#mplist");if(!L)return;const q=($("#mpq").value||"").toLowerCase().trim(),vo=$("#mpvis").checked,sel=$("#modelpick").value;
+ const rows=MODELS.filter(m=>(!vo||m.vision||m.id==="auto")&&(!q||(cleanName(m)+" "+m.id+" "+(m.provider||"")).toLowerCase().includes(q)));
+ L.innerHTML=rows.map(m=>`<div class="mrow${m.id===sel?" sel":""}${m.status==="off"?" off":""}" data-id="${esc(m.id)}" role="button" tabindex="0">${logoHTML(m,38)}<div class="mtx"><b>${esc(cleanName(m))}</b><small>${esc(({xkiro:"Xkiro",openrouter:"OpenRouter",auto:"Otomatis"})[m.provider]||m.provider||"")}${m.vision?" · bisa lihat gambar":""}${m.free?" · gratis":""}</small>${m.status==="off"&&m.error?`<small class="er">${esc(String(m.error).slice(0,90))}</small>`:""}</div><div class="mrr">${stB(m)}${m.vision?'<span class="bdg vis">VISION</span>':""}${m.id!=="auto"?`<button class="btn mck${m.ping?" spin":""}" data-ck="${esc(m.id)}">${m.ping?"…":"Cek"}</button>`:""}</div></div>`).join("")||'<div class="sub" style="padding:12px">Tidak ada model yang cocok.</div>';
+ L.querySelectorAll(".mrow").forEach(r=>r.onclick=e=>{const id=r.dataset.id;if(e.target.closest("[data-ck]")){e.stopPropagation();pingModel(e.target.closest("[data-ck]").dataset.ck);return}
+  const m=MODELS.find(x=>x.id===id);if(m&&m.status==="off"){toast("Model OFF"+(m.error?": "+String(m.error).slice(0,60):"")+". Tekan Cek untuk tes ulang.");return}
+  $("#modelpick").value=id;LS.vx_model=id;mpBtn();mpClose();clog("info","Model dipilih: "+cleanName(m||{id}))})}
+function mpOpen(){snd("on");$("#mpsheet").classList.add("show");mpRender();if(MODELS.length<2)loadModels()}
+const mpClose=()=>$("#mpsheet").classList.remove("show");
+$("#mpbtn").onclick=mpOpen;$("#mpclose").onclick=mpClose;$("#mpsheet").addEventListener("click",e=>{if(e.target.id==="mpsheet")mpClose()});$("#mpq").oninput=mpRender;$("#mpvis").onchange=mpRender;$("#mpall").onclick=pingAll;
+if(LS.vx_model)$("#modelpick").value=LS.vx_model;mpBtn();
+
+/* --- API key: nama + kedaluwarsa, daftar model & endpoint --- */
+const fmtD=t=>new Date(t*1000).toLocaleDateString("id-ID",{day:"numeric",month:"short",year:"numeric"});
+function expHTML(k,now){if(!k.exp)return'<span class="kex ok">Tanpa kedaluwarsa</span>';const left=k.exp-(now||Math.floor(Date.now()/1000)),d=Math.ceil(left/86400);
+ return left<=0?`<span class="kex dead">KEDALUWARSA · ${fmtD(k.exp)}</span>`:`<span class="kex ${d<=7?"soon":"ok"}">Kedaluwarsa ${fmtD(k.exp)} · ${d} hari lagi</span>`}
+async function keysL(){const kl=$("#kl");if(!kl)return;try{const d=await(await api("/v1/keys")).json();if(!$("#kl"))return;
+ kl.innerHTML=d.keys.length?d.keys.map(k=>`<div class="kr"><div><b>${esc(k.name)}</b><br><span class="sub">${esc(k.prefix)}… · dibuat ${fmtD(k.created)}${k.last?" · dipakai "+new Date(k.last*1000).toLocaleString("id-ID"):" · belum dipakai"}</span><br>${expHTML(k,d.now)}</div><button class="btn" data-del="${esc(k.id)}" title="Cabut">${ic("trash")}</button></div>`).join(""):'<div class="sub">Belum ada API key.</div>';
+ kl.querySelectorAll("[data-del]").forEach(b=>b.onclick=async()=>{if(!confirm("Cabut API key ini? Aplikasi yang memakainya akan berhenti bekerja."))return;try{await api("/v1/keys/"+b.dataset.del,{method:"DELETE"});clog("warn","API key dicabut");keysL()}catch(e){toast(e.message)}})}
+ catch(e){kl.innerHTML='<div class="sub" style="color:#ff9aa8">'+esc(e.message)+'</div>'}}
+const cpy=(t,msg)=>navigator.clipboard.writeText(t).then(()=>toast(msg||"Disalin"),()=>toast("Gagal menyalin"));
+function rApi(el){const direct=base.replace(/\/+$/,""),https=location.protocol==="https:"&&direct.startsWith("http:")&&direct===PROXY_TARGET?location.origin+PROXY_PATH:null,pub=(https||direct)+"/v1",ex=curModel().id!=="auto"?curModel().id:"auto";
+ const EP=[["POST","/chat/completions","Chat / coding / thinking"],["GET","/models","Daftar model + status"],["POST","/vision/analyze","Gambar & frame video"],["POST","/files/analyze","PDF, ZIP, teks/kode"],["POST","/projects","Buat proyek ZIP"]];
+ el.innerHTML=`<p class="sub">Buat API key untuk memanggil AI VarzXProgramAI dari bot/aplikasi Anda. Key hanya ditampilkan sekali saat dibuat. Jangan taruh key di kode frontend publik.</p>
+ <div class="kx"><input id="kn" placeholder="Nama key (mis. bot-telegram)" maxlength="40"><select id="kd" aria-label="Masa berlaku"><option value="0">Tanpa kedaluwarsa</option><option value="7">7 hari</option><option value="30" selected>30 hari</option><option value="90">90 hari</option><option value="180">180 hari</option><option value="365">1 tahun</option></select><button class="btn pri" id="kc">${ic("plus")} Buat</button></div><div id="kn2"></div><div id="kl"><div class="sub">Memuat…</div></div>
+ <h3 style="margin:16px 0 4px">Endpoint</h3><div class="sub">Base URL${https?" (HTTPS, disarankan)":""}</div><div class="epr"><code>${esc(pub)}</code><button class="btn" data-cp="${esc(pub)}">${ic("copy")}</button></div>${https?`<div class="sub">Langsung (HTTP): <code>${esc(direct)}/v1</code></div>`:""}
+ ${EP.map(e=>`<div class="epr"><span class="tg${e[0]==="GET"?" g":""}">${e[0]}</span><code>${esc(pub+e[1])}</code><button class="btn" data-cp="${esc(pub+e[1])}" title="${esc(e[2])}">${ic("copy")}</button></div>`).join("")}
+ <p class="sub" style="margin-top:10px">Contoh (model <code>${esc(ex)}</code>, tanpa stream):</p><pre class="ex"><code>curl -X POST ${esc(pub)}/chat/completions \\\\\n  -H "Authorization: Bearer vx-KEY_ANDA" \\\\\n  -H "Content-Type: application/json" \\\\\n  -d '{"model":"${esc(ex)}","messages":[{"role":"user","content":"Halo"}],"mode":"coding"}'</code></pre><p class="sub">Balasan memuat <code>choices[0].message.content</code> (format mirip OpenAI) dan <code>content</code>. Key yang sudah kedaluwarsa ditolak dengan HTTP 401.</p>
+ <h3 style="margin:16px 0 4px">Daftar model <span class="sub" id="apc"></span></h3><div class="sub">Semua model memakai endpoint chat di atas; isi field <code>model</code> dengan ID model.</div><div class="mpt" style="margin:8px 0"><button class="btn" id="apr">${ic("refresh")} Muat ulang</button><button class="btn" id="apall">Cek semua</button></div><div id="apl"></div>`;
+ el.querySelectorAll("[data-cp]").forEach(b=>b.onclick=()=>cpy(b.dataset.cp));
+ const draw=()=>{const l=$("#apl");if(!l)return;$("#apc").textContent=MODELS.length?"· "+MODELS.length+" model":"";l.innerHTML=MODELS.map(m=>`<div class="apm">${logoHTML(m,30)}<div class="mtx"><b>${esc(cleanName(m))}</b><small><code>${esc(m.id)}</code></small><small>POST ${esc(pub)}/chat/completions</small></div><div class="mrr">${stB(m)}${m.vision?'<span class="bdg vis">VISION</span>':""}<button class="btn mck" data-id="${esc(m.id)}">Salin ID</button></div></div>`).join("")||'<div class="sub">Belum ada model.</div>';l.querySelectorAll("[data-id]").forEach(b=>b.onclick=()=>cpy(b.dataset.id,"ID model disalin"))};
+ draw();$("#apr").onclick=async()=>{await loadModels();draw()};$("#apall").onclick=async()=>{await pingAll();draw()};
+ $("#kc").onclick=async()=>{$("#kc").disabled=true;try{const r=await(await api("/v1/keys",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:$("#kn").value.trim()||"Key",days:+$("#kd").value})})).json();clog("ok","API key dibuat: "+r.name);snd("recv");
+  $("#kn2").innerHTML=`<div class="knew"><div class="sub">Key baru — salin sekarang, tidak akan ditampilkan lagi:</div><code>${esc(r.key)}</code><div>${expHTML(r)}</div><button class="btn" id="kcp">${ic("copy")} Salin</button></div>`;$("#kcp").onclick=()=>cpy(r.key,"Key disalin");$("#kn").value="";keysL()}catch(e){toast(e.message)}$("#kc").disabled=false};keysL()}
+
+/* --- Vision & video: gambar/frame diambil di browser (tanpa ffmpeg di server) --- */
+const MODE_LBL={normal:"Normal",coding:"Coding",thinking:"Structured Thinking",file:"File Analysis",vision:"Vision",video:"Video",project:"Project/ZIP"};
+function toJpeg(src,w,h,max,q){const c=document.createElement("canvas"),r=Math.min(1,max/Math.max(w,h));c.width=Math.max(1,Math.round(w*r));c.height=Math.max(1,Math.round(h*r));c.getContext("2d").drawImage(src,0,0,c.width,c.height);let u=c.toDataURL("image/jpeg",q);while(u.length>5200000&&q>.4){q-=.15;u=c.toDataURL("image/jpeg",q)}return u}
+function imgData(file){return new Promise((ok,no)=>{const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{try{ok(toJpeg(im,im.naturalWidth,im.naturalHeight,1280,.85))}catch(e){no(e)}URL.revokeObjectURL(u)};im.onerror=()=>{URL.revokeObjectURL(u);no(new Error("Format gambar tidak bisa dibaca browser."))};im.src=u})}
+function videoFrames(file,n){return new Promise((ok,no)=>{const u=URL.createObjectURL(file),v=document.createElement("video");v.muted=true;v.playsInline=true;v.preload="auto";v.src=u;const out=[];let dead=false;
+ const end=(e)=>{if(dead)return;dead=true;URL.revokeObjectURL(u);e?no(e):ok(out)},kill=setTimeout(()=>end(out.length?null:new Error("Video terlalu lama dibaca / format tidak didukung browser.")),40000);
+ v.onerror=()=>end(new Error("Video tidak bisa dibaca browser (coba MP4/H.264 atau WebM)."));
+ v.onloadedmetadata=async()=>{try{const d=isFinite(v.duration)&&v.duration>0?v.duration:n;
+  for(let i=1;i<=n;i++){const t=Math.min(Math.max(d*i/(n+1),.05),Math.max(d-.05,.05));await new Promise(r=>{let done=0;const f=()=>{if(!done){done=1;v.removeEventListener("seeked",f);r()}};v.addEventListener("seeked",f);v.currentTime=t;setTimeout(f,5000)});
+   if(v.videoWidth)out.push(toJpeg(v,v.videoWidth,v.videoHeight,768,.78));$("#fn").textContent="Mengambil frame video "+i+"/"+n+"…"}
+  clearTimeout(kill);end(out.length?null:new Error("Tidak ada frame yang bisa diambil dari video."))}catch(e){clearTimeout(kill);end(e)}}})}
+async function fileAnalyze(file,txt){const e=(file.name.split(".").pop()||"").toLowerCase(),isImg=file.type.startsWith("image/")||/^(jpe?g|png|webp|gif|bmp)$/.test(e),isVid=file.type.startsWith("video/")||/^(mp4|webm|mov|m4v|mkv)$/.test(e);
+ if(mode==="vision"&&!isImg)throw new Error("Mode Vision untuk gambar (JPG/PNG/WebP). Untuk video pilih mode Video.");if(mode==="video"&&!isVid)throw new Error("Mode Video untuk file video (MP4/WebM/MOV).");
+ if((isImg||isVid)&&caps.image_analysis===false)throw new Error("Belum ada model vision di server. Isi VISION_* di config.json, atau pastikan XKIRO/OPENROUTER key aktif dan punya model gratis yang bisa melihat gambar.");
+ const J=b=>({method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(b),signal:ctrl.signal});
+ if(isImg||isVid){let images;try{images=isImg?[await imgData(file)]:await videoFrames(file,6)}catch(er){if(isVid)throw er;clog("warn","Konversi gambar gagal, kirim file asli: "+er.message);images=null}
+  if(images){clog("info",(isImg?"Gambar":"Video")+" → "+images.length+" gambar dikirim ke model vision");$("#fn").textContent="";return await(await api("/v1/vision/analyze",J({question:txt||(isImg?"Jelaskan isi gambar ini.":"Ringkas apa yang terjadi di video ini."),images,kind:isImg?"image":"video",name:file.name}))).json()}}
+ if(file.size>(caps.max_upload_mb||20)*1048576)throw new Error("File terlalu besar.");const fd=new FormData();fd.append("file",file);fd.append("question",txt||"Analisis file ini.");return await(await api("/v1/files/analyze",{method:"POST",body:fd,signal:ctrl.signal})).json()}
+const _setMode=setMode;
+setMode=function(m){mode=m;clog("info","Mode: "+m);document.querySelectorAll("#modes [data-m]").forEach(b=>b.classList.toggle("on",b.dataset.m===m));$("#md").textContent=MODE_LBL[m]||m;$("#fl").hidden=!isFM(m);$("#f").accept=m==="vision"?"image/*":m==="video"?"video/*":".jpg,.jpeg,.png,.webp,.mp4,.webm,.mov,.pdf,.zip,.txt,.md,.py,.js,.ts,.jsx,.tsx,.html,.css,.json,.xml,.yaml,.yml,.toml,.sql,.java,.c,.cpp,.go,.rs,.php,.sh";$("#in").placeholder=m==="project"?"Deskripsikan proyek yang ingin dibuat…":m==="vision"?"Tanya tentang gambar (lampirkan dengan ikon klip)…":m==="video"?"Tanya tentang video (lampirkan dengan ikon klip)…":m==="file"?"Pertanyaan tentang file…":"Tulis pesan…"};
+document.querySelectorAll("#modes [data-m]").forEach(b=>b.onclick=()=>setMode(b.dataset.m));
+$("#f").onchange=e=>{const f=e.target.files[0];$("#fn").textContent=f?`${f.name} · ${(f.size/1048576).toFixed(2)} MB`:"";if(f&&!isFM(mode))setMode(f.type.startsWith("image/")?"vision":f.type.startsWith("video/")?"video":"file")};
+
+/* --- Suara: dikte (mic) + Mode Suara percakapan + bacakan jawaban --- */
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition,TTS=window.speechSynthesis;let rec=null,dictBase="";
+const speakClean=t=>String(t).replace(/```[\s\S]*?```/g," (kode ditampilkan di layar). ").replace(/\[([^\]]+)\]\([^)]*\)/g,"$1").replace(/https?:\/\/\S+/g," tautan ").replace(/`([^`]+)`/g,"$1").replace(/[*_#>~|]/g,"").replace(/^[-•]\s+/gm,"").replace(/\s+/g," ").trim();
+function chunks(t){const parts=t.match(/[^.!?\n]+[.!?]*\s*/g)||[t],out=[];let c="";for(const p of parts){if((c+p).length>170&&c){out.push(c);c=p}else c+=p}if(c.trim())out.push(c);return out}
+function speak(text,done){if(!TTS){toast("Browser ini tidak mendukung suara keluar.");done&&done();return}TTS.cancel();const cs=chunks(speakClean(text)).slice(0,40);if(!cs.length){done&&done();return}
+ const vs=TTS.getVoices(),v=vs.find(x=>/^id[-_]ID/i.test(x.lang))||vs.find(x=>/^id/i.test(x.lang));
+ cs.forEach((c,i)=>{const u=new SpeechSynthesisUtterance(c);u.lang="id-ID";if(v)u.voice=v;u.rate=1.02;if(i===cs.length-1){u.onend=()=>done&&done();u.onerror=()=>done&&done()}TTS.speak(u)})}
+const stopSpeak=()=>{try{TTS&&TTS.cancel()}catch(e){}};
+function listenOnce(onFinal,onInterim,onEnd){if(!SR){toast("Pengenalan suara tidak didukung browser ini. Gunakan Chrome.");return false}
+ try{rec&&rec.abort()}catch(e){}rec=new SR();rec.lang="id-ID";rec.interimResults=true;rec.continuous=false;rec.maxAlternatives=1;let fin="",err="";
+ rec.onresult=e=>{let f="",i="";for(const r of e.results){if(r.isFinal)f+=r[0].transcript;else i+=r[0].transcript}fin=f||fin;onInterim&&onInterim(f||i)};
+ rec.onerror=e=>{err=e.error;if(e.error==="not-allowed"||e.error==="service-not-allowed")toast("Izin mikrofon ditolak. Aktifkan di pengaturan situs.")};
+ rec.onend=()=>onEnd&&onEnd(fin.trim(),err);try{rec.start();return true}catch(e){return false}}
+$("#mic").onclick=()=>{if($("#mic").classList.contains("rec")){try{rec.stop()}catch(e){}return}dictBase=$("#in").value?$("#in").value.trim()+" ":"";
+ if(listenOnce(null,t=>{$("#in").value=dictBase+t;$("#in").dispatchEvent(new Event("input"))},(t)=>{$("#mic").classList.remove("rec");if(t){$("#in").value=dictBase+t;$("#in").dispatchEvent(new Event("input"))}}))$("#mic").classList.add("rec")};
+function vState(s,t){VO.s=s;$("#voice").dataset.s=s;$("#vst").textContent=({idle:"Siap",listening:"Mendengarkan…",thinking:"Memproses…",speaking:"Berbicara…"})[s];if(t!==undefined)$("#vtx").textContent=t}
+function vListen(){if(!VO.on||busy)return;vState("listening","Silakan bicara…");const ok=listenOnce(null,t=>{if(VO.on)$("#vtx").textContent=t},(t,err)=>{if(!VO.on)return;if(t){$("#in").value=t;vState("thinking",t);send()}else if(err==="not-allowed"||err==="service-not-allowed"){voiceStop()}else if(!busy&&VO.s==="listening")setTimeout(vListen,350)});if(!ok)voiceStop()}
+function voiceSpeak(m){if(!VO.on)return;vState("speaking",m.err?"":speakClean(m.c).slice(0,160)+(m.c.length>160?"…":""));speak(m.err?"Maaf, terjadi kesalahan. "+m.c:m.c,()=>{if(VO.on)setTimeout(vListen,300)})}
+function voiceStart(){if(!SR||!TTS){toast("Mode Suara butuh Chrome/Edge dengan pengenalan suara.");return}if(!tok){return}if(mode!=="normal"&&mode!=="coding"&&mode!=="thinking")setMode("normal");VO.on=true;$("#voice").classList.add("show");$("#vm").classList.add("on");snd("on");try{AU.bgm&&AU.bgm.pause();AU.trackAudio&&AU.trackAudio.pause()}catch(e){}vListen()}
+function voiceStop(){VO.on=false;try{rec&&rec.abort()}catch(e){}stopSpeak();$("#voice").classList.remove("show");$("#vm").classList.remove("on");vState("idle","")}
+$("#vm").onclick=()=>VO.on?voiceStop():voiceStart();$("#vx").onclick=voiceStop;$("#vtalk").onclick=()=>{stopSpeak();try{rec&&rec.abort()}catch(e){}if(!busy)vListen()};$("#vskip").onclick=()=>{stopSpeak();if(VO.on&&!busy)setTimeout(vListen,200)};
+if(TTS)TTS.onvoiceschanged=()=>{};
+$("#mic").hidden=!SR;$("#vm").hidden=!(SR&&TTS);
 </script></body></html>
