@@ -1,7 +1,7 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    {"source": "/vx-proxy/:path*", "destination": "http://lunaris-node-free.hostkita.help:20231/:path*"}
+    {"source": "/vx-proxy/:path*", "destination": "http://lunaris-node-free.hostkita.help:20840/:path*"}
   ],
   "headers": [
     {"source": "/(.*)", "headers": [
